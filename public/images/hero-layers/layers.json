@@ -1,0 +1,16 @@
+{
+  "note": "All layers are full 1920x1080 \u2014 use inset:0 + object-fit:cover to match exact photo",
+  "size": [
+    1920,
+    1080
+  ],
+  "files": {
+    "wordmark": "/images/hero-layers/wordmark.png",
+    "mannequin": "/images/hero-layers/mannequin.png",
+    "bag": "/images/hero-layers/bag.png",
+    "shoe": "/images/hero-layers/shoe.png",
+    "table": "/images/hero-layers/table.png",
+    "background": "/images/hero-layers/background.jpg",
+    "exact": "/images/IMG_0558.jpg"
+  }
+}

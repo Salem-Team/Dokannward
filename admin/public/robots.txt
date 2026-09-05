@@ -1,0 +1,3 @@
+# Laravel admin — keep crawlers on the public storefront.
+User-agent: *
+Disallow: /

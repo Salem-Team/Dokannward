@@ -1,0 +1,5 @@
+# KORFDYA - Always reference technical and design specs
+- Check /docs/tech-spec.md for technical requirements
+- Check /docs/design-spec.md for UI/UX requirements  
+- Prioritize RTL/LTR implementation from start
+- Follow Laravel 12.4 best practices

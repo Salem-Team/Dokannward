@@ -1,0 +1,9 @@
+{
+  "name": "Dokan Ward Admin",
+  "short_name": "Dokan Ward",
+  "description": "Dokan Ward commerce admin — same brand as the storefront.",
+  "start_url": "/admin",
+  "display": "standalone",
+  "background_color": "#fefdf9",
+  "theme_color": "#3a2a1a"
+}

@@ -1,0 +1,1262 @@
+{
+  "source": "https://dokannward.com",
+  "scraped_at": "2026-09-04T14:27:23.663049+00:00",
+  "brand": {
+    "name": "Dokan Ward",
+    "url": "https://dokannward.com",
+    "hotline": "01069503631"
+  },
+  "categories": [
+    {
+      "id": 107,
+      "name": "Bakhoor & Burners",
+      "slug": "bakhoor-burners",
+      "source_slug": "bakhoor-burners",
+      "parent": 0,
+      "count": 2,
+      "description": "",
+      "image": "/images/categories/bakhoor-burners.png"
+    },
+    {
+      "id": 110,
+      "name": "Boho style",
+      "slug": "boho-style",
+      "source_slug": "boho-style",
+      "parent": 0,
+      "count": 7,
+      "description": "",
+      "image": "/images/categories/boho-style.png"
+    },
+    {
+      "id": 105,
+      "name": "Candle holder",
+      "slug": "candle-holder",
+      "source_slug": "candle-holder",
+      "parent": 0,
+      "count": 5,
+      "description": "",
+      "image": "/images/categories/candle-holder.png"
+    },
+    {
+      "id": 106,
+      "name": "Decoration products",
+      "slug": "decoration-products",
+      "source_slug": "decoration-products",
+      "parent": 0,
+      "count": 0,
+      "description": "",
+      "image": "/images/categories/decoration-products.png"
+    },
+    {
+      "id": 111,
+      "name": "Diffusers",
+      "slug": "diffusers",
+      "source_slug": "diffusers",
+      "parent": 0,
+      "count": 0,
+      "description": "",
+      "image": "/images/categories/diffusers.png"
+    },
+    {
+      "id": 101,
+      "name": "Flowers",
+      "slug": "flowers",
+      "source_slug": "flowers",
+      "parent": 0,
+      "count": 0,
+      "description": "",
+      "image": "/images/categories/flowers.png"
+    },
+    {
+      "id": 98,
+      "name": "Lamps",
+      "slug": "lamps",
+      "source_slug": "lamps",
+      "parent": 0,
+      "count": 1,
+      "description": "",
+      "image": "/images/categories/lamps.png"
+    },
+    {
+      "id": 108,
+      "name": "Ramadan products",
+      "slug": "ramadan-products",
+      "source_slug": "ramadan-products",
+      "parent": 0,
+      "count": 0,
+      "description": "",
+      "image": "/images/categories/ramadan-products.png"
+    },
+    {
+      "id": 104,
+      "name": "Sculpture",
+      "slug": "sculpture",
+      "source_slug": "sculpture",
+      "parent": 0,
+      "count": 1,
+      "description": "",
+      "image": "/images/categories/sculpture.png"
+    },
+    {
+      "id": 109,
+      "name": "Small Artificial plants",
+      "slug": "small-artificial-plants",
+      "source_slug": "artificial-plants",
+      "parent": 0,
+      "count": 2,
+      "description": "",
+      "image": "/images/categories/small-artificial-plants.png"
+    },
+    {
+      "id": 99,
+      "name": "Tissue boxes",
+      "slug": "tissue-boxes",
+      "source_slug": "tissue-boxes",
+      "parent": 0,
+      "count": 2,
+      "description": "",
+      "image": "/images/categories/tissue-boxes.png"
+    },
+    {
+      "id": 103,
+      "name": "Trays",
+      "slug": "trays",
+      "source_slug": "trays",
+      "parent": 0,
+      "count": 1,
+      "description": "",
+      "image": "/images/categories/trays.png"
+    },
+    {
+      "id": 102,
+      "name": "Trees",
+      "slug": "trees",
+      "source_slug": "trees",
+      "parent": 0,
+      "count": 4,
+      "description": "",
+      "image": "/images/categories/trees.png"
+    },
+    {
+      "id": 100,
+      "name": "Vases",
+      "slug": "vases",
+      "source_slug": "vases",
+      "parent": 0,
+      "count": 5,
+      "description": "",
+      "image": "/images/categories/vases.png"
+    },
+    {
+      "id": 97,
+      "name": "Wall art & clocks",
+      "slug": "wall-art-clocks",
+      "source_slug": "wall-art-clocks",
+      "parent": 0,
+      "count": 11,
+      "description": "",
+      "image": "/images/categories/wall-art-clocks.png"
+    }
+  ],
+  "products": [
+    {
+      "id": 2474,
+      "sku": "0659",
+      "name": "Stand clock",
+      "slug": "stand-clock-2",
+      "permalink": "https://dokannward.com/product/stand-clock-2/",
+      "price": 4800.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "ساعه ستاند خامه الستاند ستيل والساعه من فوق اكليرك\n\nمقاس الساعه  طول متر ونص\n\nوالساعه  قطر ٣٠ سم التروس متحركه",
+      "description": "ساعه ستاند خامه الستاند ستيل والساعه من فوق اكليرك\n\nمقاس الساعه  طول متر ونص\n\nوالساعه  قطر ٣٠ سم التروس متحركه",
+      "categories": [
+        {
+          "id": 97,
+          "name": "Wall art & clocks",
+          "slug": "wall-art-clocks",
+          "source_slug": "wall-art-clocks"
+        }
+      ],
+      "images": [
+        "/images/products/2474-0.jpeg",
+        "/images/products/2474-1.jpeg"
+      ],
+      "image": "/images/products/2474-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2463,
+      "sku": "7576",
+      "name": "Elegant horse sculpture",
+      "slug": "elegant-horse-sculpture",
+      "permalink": "https://dokannward.com/product/elegant-horse-sculpture/",
+      "price": 890.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "تمثال من الخزف مستورد بألوان مميزه وتغليف ممتاز",
+      "description": "تمثال من الخزف مستورد بألوان مميزه وتغليف ممتاز",
+      "categories": [
+        {
+          "id": 104,
+          "name": "Sculpture",
+          "slug": "sculpture",
+          "source_slug": "sculpture"
+        }
+      ],
+      "images": [
+        "/images/products/2463-0.jpeg"
+      ],
+      "image": "/images/products/2463-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2461,
+      "sku": "7598",
+      "name": "Amber crystal candle holder set – 2 pieces",
+      "slug": "amber-crystal-candle-holder-set-2-pieces",
+      "permalink": "https://dokannward.com/product/amber-crystal-candle-holder-set-2-pieces/",
+      "price": 2000.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "شمعدانات كريستال قطعتين باللون العسلي المميز\n\nالطقم تقيل جدا تغليف ممتاز ينفع مع اي مقاس شمع",
+      "description": "شمعدانات كريستال قطعتين باللون العسلي المميز\n\nالطقم تقيل جدا تغليف ممتاز ينفع مع اي مقاس شمع",
+      "categories": [
+        {
+          "id": 105,
+          "name": "Candle holder",
+          "slug": "candle-holder",
+          "source_slug": "candle-holder"
+        }
+      ],
+      "images": [
+        "/images/products/2461-0.jpeg",
+        "/images/products/2461-1.jpeg",
+        "/images/products/2461-2.jpeg",
+        "/images/products/2461-3.jpeg",
+        "/images/products/2461-4.jpeg"
+      ],
+      "image": "/images/products/2461-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2445,
+      "sku": "0461",
+      "name": "Ceramic tissue box",
+      "slug": "ceramic-tissue-box",
+      "permalink": "https://dokannward.com/product/ceramic-tissue-box/",
+      "price": 450.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "",
+      "description": "",
+      "categories": [
+        {
+          "id": 99,
+          "name": "Tissue boxes",
+          "slug": "tissue-boxes",
+          "source_slug": "tissue-boxes"
+        }
+      ],
+      "images": [
+        "/images/products/2445-0.jpeg",
+        "/images/products/2445-1.jpeg"
+      ],
+      "image": "/images/products/2445-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2442,
+      "sku": "2937",
+      "name": "Stainless steel tray",
+      "slug": "stainless-steel-tray",
+      "permalink": "https://dokannward.com/product/stainless-steel-tray/",
+      "price": 800.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "صينيه ستانلس ستيل ضد المياه والصدأ\n\nقطرها ٣٠ سم مزوده بمرايا\n\nStainless steel tray, waterproof and rust-resistant, 30 cm diameter, equipped with a mirror.",
+      "description": "صينيه ستانلس ستيل ضد المياه والصدأ\n\nقطرها ٣٠ سم مزوده بمرايا\n\nStainless steel tray, waterproof and rust-resistant, 30 cm diameter, equipped with a mirror.",
+      "categories": [
+        {
+          "id": 103,
+          "name": "Trays",
+          "slug": "trays",
+          "source_slug": "trays"
+        }
+      ],
+      "images": [
+        "/images/products/2442-0.jpeg",
+        "/images/products/2442-1.jpeg",
+        "/images/products/2442-2.jpeg"
+      ],
+      "image": "/images/products/2442-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2426,
+      "sku": "1181",
+      "name": "Benjamina Tree",
+      "slug": "benjamina-tree",
+      "permalink": "https://dokannward.com/product/benjamina-tree/",
+      "price": 3150.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "شجره البنجامينا مقاس متر ٨٥ سم\n\nبدون بوت ب ٣١٥٠\n\nبالبوت البيج او الخوص ب ٣٢٥٠ ج",
+      "description": "شجره البنجامينا مقاس متر ٨٥ سم\n\nبدون بوت ب ٣١٥٠\n\nبالبوت البيج او الخوص ب ٣٢٥٠ ج",
+      "categories": [
+        {
+          "id": 102,
+          "name": "Trees",
+          "slug": "trees",
+          "source_slug": "trees"
+        }
+      ],
+      "images": [
+        "/images/products/2426-0.jpeg",
+        "/images/products/2426-1.jpeg"
+      ],
+      "image": "/images/products/2426-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2423,
+      "sku": "4854",
+      "name": "Black vase",
+      "slug": "black-vase",
+      "permalink": "https://dokannward.com/product/black-vase/",
+      "price": 750.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "",
+      "description": "",
+      "categories": [
+        {
+          "id": 100,
+          "name": "Vases",
+          "slug": "vases",
+          "source_slug": "vases"
+        }
+      ],
+      "images": [
+        "/images/products/2423-0.jpeg",
+        "/images/products/2423-1.jpeg"
+      ],
+      "image": "/images/products/2423-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2420,
+      "sku": "7085",
+      "name": "مبخره",
+      "slug": "%d9%85%d8%a8%d8%ae%d8%b1%d9%87",
+      "permalink": "https://dokannward.com/product/%d9%85%d8%a8%d8%ae%d8%b1%d9%87/",
+      "price": 820.0,
+      "compare_at_price": 950.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "مبخره باللون الاسود  مكونه من\n\nصينيه ،ماشه ،مبخره وفازه صغيره",
+      "description": "مبخره باللون الاسود  مكونه من\n\nصينيه ،ماشه ،مبخره وفازه صغيره",
+      "categories": [
+        {
+          "id": 107,
+          "name": "Bakhoor & Burners",
+          "slug": "bakhoor-burners",
+          "source_slug": "bakhoor-burners"
+        }
+      ],
+      "images": [
+        "/images/products/2420-0.jpeg",
+        "/images/products/2420-1.jpeg"
+      ],
+      "image": "/images/products/2420-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2417,
+      "sku": "8429",
+      "name": "Small plant",
+      "slug": "small-plant",
+      "permalink": "https://dokannward.com/product/small-plant/",
+      "price": 300.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "",
+      "description": "",
+      "categories": [
+        {
+          "id": 109,
+          "name": "Small Artificial plants",
+          "slug": "small-artificial-plants",
+          "source_slug": "artificial-plants"
+        }
+      ],
+      "images": [
+        "/images/products/2417-0.jpeg"
+      ],
+      "image": "/images/products/2417-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2415,
+      "sku": "4599",
+      "name": "Sets of vases",
+      "slug": "sets-of-vases",
+      "permalink": "https://dokannward.com/product/sets-of-vases/",
+      "price": 1500.0,
+      "compare_at_price": 1700.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "Honey-Colored Frosted Glass Vase Set – 2 Pieces\n\nطقم فازات لون عسلي قطعتين سوا زجاج مسنفر",
+      "description": "Honey-Colored Frosted Glass Vase Set – 2 Pieces\n\nطقم فازات لون عسلي قطعتين سوا زجاج مسنفر",
+      "categories": [
+        {
+          "id": 100,
+          "name": "Vases",
+          "slug": "vases",
+          "source_slug": "vases"
+        }
+      ],
+      "images": [
+        "/images/products/2415-0.jpeg",
+        "/images/products/2415-1.jpeg",
+        "/images/products/2415-2.jpeg"
+      ],
+      "image": "/images/products/2415-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2411,
+      "sku": "7479",
+      "name": "مبخره خزف",
+      "slug": "%d9%85%d8%a8%d8%ae%d8%b1%d9%87-%d8%ae%d8%b2%d9%81",
+      "permalink": "https://dokannward.com/product/%d9%85%d8%a8%d8%ae%d8%b1%d9%87-%d8%ae%d8%b2%d9%81/",
+      "price": 820.0,
+      "compare_at_price": 950.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "مبخره مستورده مكونه من صينيه ، ماشه ، و مبخره",
+      "description": "مبخره مستورده مكونه من صينيه ، ماشه ، و مبخره",
+      "categories": [
+        {
+          "id": 107,
+          "name": "Bakhoor & Burners",
+          "slug": "bakhoor-burners",
+          "source_slug": "bakhoor-burners"
+        }
+      ],
+      "images": [
+        "/images/products/2411-0.jpeg",
+        "/images/products/2411-1.jpeg"
+      ],
+      "image": "/images/products/2411-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2406,
+      "sku": "0403",
+      "name": "Jasmine Tree",
+      "slug": "jasmine-tree",
+      "permalink": "https://dokannward.com/product/jasmine-tree/",
+      "price": 4050.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "Jasmine Tree – 220 cm\n\nMaterial: Leather\n\nPremium Quality\n\nWithout Pot: 4,050\n\nWith Beige Pot or Wicker Pot: 4,200\n\nالشجره مقاس ٢٢٠ سم ماتيريال جلد\n\nكواليتي عاليه جدا جدا\n\nبدون بوت ب ٤٠٥٠\n\nبالبوت البيج  او الخوص ٤٢٠٠",
+      "description": "Jasmine Tree – 220 cm\n\nMaterial: Leather\n\nPremium Quality\n\nWithout Pot: 4,050\n\nWith Beige Pot or Wicker Pot: 4,200\n\nالشجره مقاس ٢٢٠ سم ماتيريال جلد\n\nكواليتي عاليه جدا جدا\n\nبدون بوت ب ٤٠٥٠\n\nبالبوت البيج  او الخوص ٤٢٠٠",
+      "categories": [
+        {
+          "id": 102,
+          "name": "Trees",
+          "slug": "trees",
+          "source_slug": "trees"
+        }
+      ],
+      "images": [
+        "/images/products/2406-0.jpeg",
+        "/images/products/2406-1.jpeg",
+        "/images/products/2406-2.jpeg"
+      ],
+      "image": "/images/products/2406-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2397,
+      "sku": "6637",
+      "name": "Clock",
+      "slug": "clock-4",
+      "permalink": "https://dokannward.com/product/clock-4/",
+      "price": 1590.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "Moving Gear Clock – 30 cm\n\nMaterial: Acrylic\n\nساعه تروس متحركه مقاس ٥٠ سم\n\nماتيريال اكليرك",
+      "description": "Moving Gear Clock – 30 cm\n\nMaterial: Acrylic\n\nساعه تروس متحركه مقاس ٥٠ سم\n\nماتيريال اكليرك",
+      "categories": [
+        {
+          "id": 97,
+          "name": "Wall art & clocks",
+          "slug": "wall-art-clocks",
+          "source_slug": "wall-art-clocks"
+        }
+      ],
+      "images": [
+        "/images/products/2397-0.jpeg"
+      ],
+      "image": "/images/products/2397-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2395,
+      "sku": "9995",
+      "name": "Stand clock",
+      "slug": "stand-clock",
+      "permalink": "https://dokannward.com/product/stand-clock/",
+      "price": 4800.0,
+      "compare_at_price": 5200.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "Imported Standing Clock – 1.5 m\n\nMaterial: Steel & Acrylic\n\nMoving Gears\n\nClock Diameter: 30 cm",
+      "description": "Imported Standing Clock – 1.5 m\n\nMaterial: Steel & Acrylic\n\nMoving Gears\n\nClock Diameter: 30 cm",
+      "categories": [
+        {
+          "id": 97,
+          "name": "Wall art & clocks",
+          "slug": "wall-art-clocks",
+          "source_slug": "wall-art-clocks"
+        }
+      ],
+      "images": [
+        "/images/products/2395-0.jpeg",
+        "/images/products/2395-1.jpeg",
+        "/images/products/2395-2.jpeg",
+        "/images/products/2395-3.jpeg"
+      ],
+      "image": "/images/products/2395-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2390,
+      "sku": "2264",
+      "name": "Clock",
+      "slug": "clock-3",
+      "permalink": "https://dokannward.com/product/clock-3/",
+      "price": 1250.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "Moving Gear Clock – 40 cm\n\nMaterial: Acrylic",
+      "description": "Moving Gear Clock – 40 cm\n\nMaterial: Acrylic",
+      "categories": [
+        {
+          "id": 97,
+          "name": "Wall art & clocks",
+          "slug": "wall-art-clocks",
+          "source_slug": "wall-art-clocks"
+        }
+      ],
+      "images": [
+        "/images/products/2390-0.jpeg",
+        "/images/products/2390-1.jpeg"
+      ],
+      "image": "/images/products/2390-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2387,
+      "sku": "0994",
+      "name": "Clock",
+      "slug": "clock-2",
+      "permalink": "https://dokannward.com/product/clock-2/",
+      "price": 1250.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "Moving Gear Clock – 40 cm\n\nMaterial: Acrylic",
+      "description": "Moving Gear Clock – 40 cm\n\nMaterial: Acrylic",
+      "categories": [
+        {
+          "id": 97,
+          "name": "Wall art & clocks",
+          "slug": "wall-art-clocks",
+          "source_slug": "wall-art-clocks"
+        }
+      ],
+      "images": [
+        "/images/products/2387-0.jpeg"
+      ],
+      "image": "/images/products/2387-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2385,
+      "sku": "9100",
+      "name": "Clock",
+      "slug": "clock",
+      "permalink": "https://dokannward.com/product/clock/",
+      "price": 2200.0,
+      "compare_at_price": 2400.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "Moving Gear Clock – 60 cm\n\nMaterial: Acrylic",
+      "description": "Moving Gear Clock – 60 cm\n\nMaterial: Acrylic",
+      "categories": [
+        {
+          "id": 97,
+          "name": "Wall art & clocks",
+          "slug": "wall-art-clocks",
+          "source_slug": "wall-art-clocks"
+        }
+      ],
+      "images": [
+        "/images/products/2385-0.jpeg"
+      ],
+      "image": "/images/products/2385-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2355,
+      "sku": "8552",
+      "name": "Steel clock",
+      "slug": "steel-clock-2",
+      "permalink": "https://dokannward.com/product/steel-clock-2/",
+      "price": 2400.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": false,
+      "short_description": "Elegant Imported Stainless Steel Wall Clock\n\nMeasuring 100 x 50 cm\n\nVersatile design – can be hung vertically or horizontally to suit your space.",
+      "description": "Elegant Imported Stainless Steel Wall Clock\n\nMeasuring 100 x 50 cm\n\nVersatile design – can be hung vertically or horizontally to suit your space.",
+      "categories": [
+        {
+          "id": 97,
+          "name": "Wall art & clocks",
+          "slug": "wall-art-clocks",
+          "source_slug": "wall-art-clocks"
+        }
+      ],
+      "images": [
+        "/images/products/2355-0.jpeg"
+      ],
+      "image": "/images/products/2355-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2353,
+      "sku": "8326",
+      "name": "Steel clocks",
+      "slug": "steel-clocks",
+      "permalink": "https://dokannward.com/product/steel-clocks/",
+      "price": 2550.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": false,
+      "short_description": "Elegant Imported Stainless Steel Wall Clock\n\nMeasuring 100 x 50 cm\n\nVersatile design – can be hung vertically or horizontally to suit your space.",
+      "description": "Elegant Imported Stainless Steel Wall Clock\n\nMeasuring 100 x 50 cm\n\nVersatile design – can be hung vertically or horizontally to suit your space.",
+      "categories": [
+        {
+          "id": 97,
+          "name": "Wall art & clocks",
+          "slug": "wall-art-clocks",
+          "source_slug": "wall-art-clocks"
+        }
+      ],
+      "images": [
+        "/images/products/2353-0.jpeg",
+        "/images/products/2353-1.jpeg",
+        "/images/products/2353-2.jpeg"
+      ],
+      "image": "/images/products/2353-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2279,
+      "sku": "1811",
+      "name": "Set of  large  2 vases",
+      "slug": "set-of-large-2-vases",
+      "permalink": "https://dokannward.com/product/set-of-large-2-vases/",
+      "price": 2650.0,
+      "compare_at_price": 2950.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "Elegant set of 2 large porcelain vases – the perfect touch of class for your dining table",
+      "description": "Elegant set of 2 large porcelain vases – the perfect touch of class for your dining table",
+      "categories": [
+        {
+          "id": 100,
+          "name": "Vases",
+          "slug": "vases",
+          "source_slug": "vases"
+        }
+      ],
+      "images": [
+        "/images/products/2279-0.jpeg",
+        "/images/products/2279-1.jpeg"
+      ],
+      "image": "/images/products/2279-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2271,
+      "sku": "5232",
+      "name": "Small plants with flowers",
+      "slug": "small-plants-with-flowers",
+      "permalink": "https://dokannward.com/product/small-plants-with-flowers/",
+      "price": 310.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "",
+      "description": "",
+      "categories": [
+        {
+          "id": 109,
+          "name": "Small Artificial plants",
+          "slug": "small-artificial-plants",
+          "source_slug": "artificial-plants"
+        }
+      ],
+      "images": [
+        "/images/products/2271-0.jpeg",
+        "/images/products/2271-1.jpeg"
+      ],
+      "image": "/images/products/2271-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2260,
+      "sku": "4324",
+      "name": "Artificial Willow tree",
+      "slug": "product-3",
+      "permalink": "https://dokannward.com/product/product-3/",
+      "price": 2300.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "Elegant potted willow tree – 165 cm of soft, calming beauty. Imported with leather-like finish at a great price!",
+      "description": "Artificial Willow tree",
+      "categories": [
+        {
+          "id": 102,
+          "name": "Trees",
+          "slug": "trees",
+          "source_slug": "trees"
+        }
+      ],
+      "images": [
+        "/images/products/2260-0.jpeg",
+        "/images/products/2260-1.jpeg",
+        "/images/products/2260-2.jpeg"
+      ],
+      "image": "/images/products/2260-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2209,
+      "sku": "4795",
+      "name": "Steel clock",
+      "slug": "steel-clock",
+      "permalink": "https://dokannward.com/product/steel-clock/",
+      "price": 2700.0,
+      "compare_at_price": 3000.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "“Modern stainless steel wall clock with sleek glass protection – measuring 110 × 55 cm for a bold statement on your wall.”",
+      "description": "“Modern stainless steel wall clock with sleek glass protection – measuring 110 × 55 cm for a bold statement on your wall.”",
+      "categories": [
+        {
+          "id": 97,
+          "name": "Wall art & clocks",
+          "slug": "wall-art-clocks",
+          "source_slug": "wall-art-clocks"
+        }
+      ],
+      "images": [
+        "/images/products/2209-0.jpeg",
+        "/images/products/2209-1.jpeg"
+      ],
+      "image": "/images/products/2209-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2199,
+      "sku": "3540",
+      "name": "Set of  green vases",
+      "slug": "product-2",
+      "permalink": "https://dokannward.com/product/product-2/",
+      "price": 1400.0,
+      "compare_at_price": 1650.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "Set of 2 transparent vases in a refined green-and-gold mix – a classy touch that adds elegance to your home. The set includes one large and one small piece.",
+      "description": "Set of 2 transparent vases in a refined green-and-gold mix – a classy touch that adds elegance to your home. The set includes one large and one small piece.",
+      "categories": [
+        {
+          "id": 100,
+          "name": "Vases",
+          "slug": "vases",
+          "source_slug": "vases"
+        }
+      ],
+      "images": [
+        "/images/products/2199-0.jpeg",
+        "/images/products/2199-1.jpeg",
+        "/images/products/2199-2.jpeg"
+      ],
+      "image": "/images/products/2199-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2195,
+      "sku": "8498",
+      "name": "Candle holder",
+      "slug": "candle-holder",
+      "permalink": "https://dokannward.com/product/candle-holder/",
+      "price": 1850.0,
+      "compare_at_price": 2000.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "“Elegant metal candle holders with a stylish wooden finish – a 6-piece set designed to elevate your home buffet décor.”",
+      "description": "“Elegant metal candle holders with a stylish wooden finish – a 6-piece set designed to elevate your home buffet décor.”",
+      "categories": [
+        {
+          "id": 105,
+          "name": "Candle holder",
+          "slug": "candle-holder",
+          "source_slug": "candle-holder"
+        }
+      ],
+      "images": [
+        "/images/products/2195-0.jpeg",
+        "/images/products/2195-1.jpeg",
+        "/images/products/2195-2.jpeg"
+      ],
+      "image": "/images/products/2195-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 2186,
+      "sku": "9344",
+      "name": "Product",
+      "slug": "product",
+      "permalink": "https://dokannward.com/product/product/",
+      "price": 600.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "“Ceramic candle holders – set of 3 in a distinctive size “",
+      "description": "“Ceramic candle holders – set of 3 in a distinctive size “",
+      "categories": [
+        {
+          "id": 105,
+          "name": "Candle holder",
+          "slug": "candle-holder",
+          "source_slug": "candle-holder"
+        }
+      ],
+      "images": [
+        "/images/products/2186-0.jpeg",
+        "/images/products/2186-1.jpeg",
+        "/images/products/2186-2.jpeg"
+      ],
+      "image": "/images/products/2186-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 1786,
+      "sku": "2798",
+      "name": "Table Lamp",
+      "slug": "table-lamp",
+      "permalink": "https://dokannward.com/product/table-lamp/",
+      "price": 600.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "Plug-in Electric Operation\n\nMaterial: Steel",
+      "description": "Plug-in Electric Operation\n\nMaterial: Steel",
+      "categories": [
+        {
+          "id": 110,
+          "name": "Boho style",
+          "slug": "boho-style",
+          "source_slug": "boho-style"
+        },
+        {
+          "id": 98,
+          "name": "Lamps",
+          "slug": "lamps",
+          "source_slug": "lamps"
+        }
+      ],
+      "images": [
+        "/images/products/1786-0.jpeg",
+        "/images/products/1786-1.png",
+        "/images/products/1786-2.jpeg"
+      ],
+      "image": "/images/products/1786-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 1784,
+      "sku": "0500",
+      "name": "Steel Wall Frame",
+      "slug": "steel-wall-frame",
+      "permalink": "https://dokannward.com/product/steel-wall-frame/",
+      "price": 550.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "Size: 40 × 60 cm",
+      "description": "Size: 40 × 60 cm",
+      "categories": [
+        {
+          "id": 110,
+          "name": "Boho style",
+          "slug": "boho-style",
+          "source_slug": "boho-style"
+        },
+        {
+          "id": 97,
+          "name": "Wall art & clocks",
+          "slug": "wall-art-clocks",
+          "source_slug": "wall-art-clocks"
+        }
+      ],
+      "images": [
+        "/images/products/1784-0.jpeg"
+      ],
+      "image": "/images/products/1784-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 1782,
+      "sku": "5099",
+      "name": "Artificial Banana Tree – Wide Denim Leaves",
+      "slug": "artificial-banana-tree-wide-denim-leaves",
+      "permalink": "https://dokannward.com/product/artificial-banana-tree-wide-denim-leaves/",
+      "price": 2600.0,
+      "compare_at_price": 2700.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "Height: 1 meter 85 cm\n\nMaterial: Denim Fabric\n\n(Pot not included)\n\nOptional Pots:\n•With Beige Pot: 2,750 EGP\n•With Woven Pot: 2,750 EGP\n\nThis product requires a deposit to confirm the order.",
+      "description": "Height: 1 meter 85 cm\n\nMaterial: Denim Fabric\n\n(Pot not included)\n\nOptional Pots:\n•With Beige Pot: 2,750 EGP\n•With Woven Pot: 2,750 EGP\n\nThis product requires a deposit to confirm the order.",
+      "categories": [
+        {
+          "id": 102,
+          "name": "Trees",
+          "slug": "trees",
+          "source_slug": "trees"
+        }
+      ],
+      "images": [
+        "/images/products/1782-0.jpeg"
+      ],
+      "image": "/images/products/1782-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 1773,
+      "sku": "6696",
+      "name": "Wall Clock",
+      "slug": "wall-clock",
+      "permalink": "https://dokannward.com/product/wall-clock/",
+      "price": 2500.0,
+      "compare_at_price": null,
+      "on_sale": false,
+      "in_stock": true,
+      "short_description": "Material: Stainless Steel\n\nSize: 1, 20 cm   height × 50 cm width",
+      "description": "Material: Stainless Steel\n\nSize: 1, 20 cm   height × 50 cm width",
+      "categories": [
+        {
+          "id": 110,
+          "name": "Boho style",
+          "slug": "boho-style",
+          "source_slug": "boho-style"
+        },
+        {
+          "id": 97,
+          "name": "Wall art & clocks",
+          "slug": "wall-art-clocks",
+          "source_slug": "wall-art-clocks"
+        }
+      ],
+      "images": [
+        "/images/products/1773-0.jpeg",
+        "/images/products/1773-1.jpeg"
+      ],
+      "image": "/images/products/1773-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 1768,
+      "sku": "8075",
+      "name": "Tissue Box",
+      "slug": "tissue-box",
+      "permalink": "https://dokannward.com/product/tissue-box/",
+      "price": 650.0,
+      "compare_at_price": 700.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "Material: Ceramic\n\nColor: White & Black",
+      "description": "Material: Ceramic\n\nColor: White & Black",
+      "categories": [
+        {
+          "id": 110,
+          "name": "Boho style",
+          "slug": "boho-style",
+          "source_slug": "boho-style"
+        },
+        {
+          "id": 99,
+          "name": "Tissue boxes",
+          "slug": "tissue-boxes",
+          "source_slug": "tissue-boxes"
+        }
+      ],
+      "images": [
+        "/images/products/1768-0.jpeg",
+        "/images/products/1768-1.jpeg"
+      ],
+      "image": "/images/products/1768-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "variable"
+    },
+    {
+      "id": 1763,
+      "sku": "6929",
+      "name": "2-Piece Candle Holder Set",
+      "slug": "2-piece-candle-holder-set",
+      "permalink": "https://dokannward.com/product/2-piece-candle-holder-set/",
+      "price": 3250.0,
+      "compare_at_price": 3500.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "",
+      "description": "",
+      "categories": [
+        {
+          "id": 110,
+          "name": "Boho style",
+          "slug": "boho-style",
+          "source_slug": "boho-style"
+        },
+        {
+          "id": 105,
+          "name": "Candle holder",
+          "slug": "candle-holder",
+          "source_slug": "candle-holder"
+        }
+      ],
+      "images": [
+        "/images/products/1763-0.jpg"
+      ],
+      "image": "/images/products/1763-0.jpg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 1761,
+      "sku": "8536",
+      "name": "3-Piece Candle Holder Set",
+      "slug": "3-piece-candle-holder-set",
+      "permalink": "https://dokannward.com/product/3-piece-candle-holder-set/",
+      "price": 950.0,
+      "compare_at_price": 1000.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "Material: Crystal & Steel",
+      "description": "Material: Crystal & Steel",
+      "categories": [
+        {
+          "id": 110,
+          "name": "Boho style",
+          "slug": "boho-style",
+          "source_slug": "boho-style"
+        },
+        {
+          "id": 105,
+          "name": "Candle holder",
+          "slug": "candle-holder",
+          "source_slug": "candle-holder"
+        }
+      ],
+      "images": [
+        "/images/products/1761-0.jpeg"
+      ],
+      "image": "/images/products/1761-0.jpeg",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    },
+    {
+      "id": 1759,
+      "sku": "7349",
+      "name": "2-Piece Vase Se",
+      "slug": "2-piece-vase-se",
+      "permalink": "https://dokannward.com/product/2-piece-vase-se/",
+      "price": 950.0,
+      "compare_at_price": 1000.0,
+      "on_sale": true,
+      "in_stock": true,
+      "short_description": "Material: Porcelain\n\nColor: Gold (Chrome Finish)",
+      "description": "Material: Porcelain\n\nColor: Gold (Chrome Finish)",
+      "categories": [
+        {
+          "id": 110,
+          "name": "Boho style",
+          "slug": "boho-style",
+          "source_slug": "boho-style"
+        },
+        {
+          "id": 100,
+          "name": "Vases",
+          "slug": "vases",
+          "source_slug": "vases"
+        }
+      ],
+      "images": [
+        "/images/products/1759-0.png"
+      ],
+      "image": "/images/products/1759-0.png",
+      "average_rating": "0",
+      "review_count": 0,
+      "weight": null,
+      "dimensions": null,
+      "type": "simple"
+    }
+  ]
+}

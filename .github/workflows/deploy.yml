@@ -1,0 +1,48 @@
+name: Deploy production
+
+# Fires on every push to main. Requires these repo secrets:
+#   DOKANWARD_SSH_HOST  = VPS IP / hostname
+#   DOKANWARD_SSH_USER  = SSH user (e.g. root)
+#   DOKANWARD_SSH_KEY   = private key that can SSH to the VPS
+#
+# Until secrets are set, use locally:  ./scripts/push-deploy.sh
+# Optional local overrides: DOKANWARD_SSH_HOST / DOKANWARD_REMOTE_PATH
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: dokannward-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy to dokannward.com
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Rsync code (env files excluded)
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -az --delete --exclude .git --exclude node_modules --exclude admin/node_modules --exclude admin/vendor --exclude .next --exclude admin/public/build --exclude admin/public/storage --exclude admin/storage/app/public --exclude admin/storage/logs --exclude admin/storage/framework --exclude .env --exclude .env.local --exclude .env.production --exclude admin/.env
+          path: ./
+          remote_path: /var/www/dokannward/
+          remote_host: ${{ secrets.DOKANWARD_SSH_HOST }}
+          remote_user: ${{ secrets.DOKANWARD_SSH_USER }}
+          remote_key: ${{ secrets.DOKANWARD_SSH_KEY }}
+
+      - name: Rebuild production (assert + lock URLs)
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DOKANWARD_SSH_HOST }}
+          username: ${{ secrets.DOKANWARD_SSH_USER }}
+          key: ${{ secrets.DOKANWARD_SSH_KEY }}
+          script_stop: true
+          script: |
+            set -euo pipefail
+            chmod +x /var/www/dokannward/scripts/*.sh
+            /var/www/dokannward/scripts/rebuild-production.sh

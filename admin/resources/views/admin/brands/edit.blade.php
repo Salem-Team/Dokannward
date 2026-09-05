@@ -1,0 +1,29 @@
+@extends('admin.layouts.app')
+
+@section('title', 'Edit Brand')
+
+@section('content')
+    <div class="brand-studio-page">
+        <div class="brand-studio-page__header">
+            <div>
+                <p class="brand-studio-page__eyebrow">The house</p>
+                <h1 class="brand-studio-page__title">Edit brand</h1>
+                <p class="brand-studio-page__sub">
+                    {{ is_array($brand->name) ? ($brand->name['en'] ?? 'Brand') : $brand->name }}
+                </p>
+            </div>
+            <x-admin.button variant="secondary" icon="fas fa-arrow-left" size="sm"
+                onclick="window.location='{{ route('admin.brands.index') }}'">
+                Back to Brands
+            </x-admin.button>
+        </div>
+@include('admin.brands._form', [
+            'action' => route('admin.brands.update', $brand->id),
+            'brand' => $brand,
+        ])
+    </div>
+@endsection
+
+@push('scripts')
+    @include('admin.brands._form-scripts')
+@endpush

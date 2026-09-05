@@ -1,0 +1,67 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+# testing
+/coverage
+# next.js
+/.next/
+/.next-build/
+/out/
+# production
+/build
+# misc
+.DS_Store
+*.pem
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+# env files (never commit real secrets / local or production values)
+.env*
+!.env.example
+!.env.production.example
+!admin/.env.example
+!admin/.env.production.example
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+# admin (Laravel) — also has its own .gitignore, kept here as a safety net
+admin/vendor
+admin/node_modules
+admin/storage/*.key
+admin/storage/framework/cache/*
+admin/storage/framework/sessions/*
+admin/storage/framework/views/*
+admin/storage/logs/*
+admin/public/build
+admin/public/hot
+admin/public/storage
+admin/.phpunit.cache
+# local QA scratch assets
+public/images/hero-layers/_qa_*
+reports/
+admin/.env
+admin/.env.zibra-remote-DO-NOT-USE
+admin/database/*.sqlite
+# Cursor / local tooling
+.cursor/
+# Local DB + secret backups
+admin/storage/app/public/products/
+# OS
+
+# Local Next ↔ Laravel storage symlink (absolute path; never commit)
+/public/storage
+# Local QA / debug hero captures (never ship)
+public/images/hero-layers/_browser_*
+public/images/hero-layers/_v73_*
+public/images/hero-layers/_truth_*
+public/images/hero-layers/_qa_*
+public/images/hero-layers/composite-preview.png

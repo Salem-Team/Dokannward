@@ -1,0 +1,143 @@
+/* RTL Overrides for Arabic Layout */
+
+body.lang-ar {
+    font-family: 'Noto Naskh Arabic', serif;
+    direction: rtl;
+    text-align: right;
+}
+
+/* Navigation Adjustments */
+body.lang-ar .custom-navbar-nav {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
+
+body.lang-ar .custom-navbar-cta {
+    margin-right: 40px !important;
+    margin-left: 0 !important;
+}
+
+body.lang-ar .navbar-nav {
+    flex-direction: row-reverse;
+}
+
+/* Form Controls */
+body.lang-ar .form-control,
+body.lang-ar input,
+body.lang-ar textarea,
+body.lang-ar select {
+    text-align: right;
+}
+
+body.lang-ar label {
+    text-align: right;
+}
+
+/* Button Adjustments */
+body.lang-ar .btn {
+    text-align: center;
+}
+
+/* Icon Flipping */
+body.lang-ar .icon-cross,
+body.lang-ar .hero-img-wrap:after {
+    transform: scaleX(-1);
+}
+
+/* Pagination */
+body.lang-ar .pagination {
+    flex-direction: row-reverse;
+}
+
+/* Product Grid */
+body.lang-ar .product-item {
+    direction: rtl;
+}
+
+body.lang-ar .product-item .icon-cross {
+    right: 50%;
+    left: auto;
+    transform: translateX(50%) scaleX(-1);
+}
+
+/* Breadcrumbs */
+body.lang-ar .breadcrumb {
+    direction: rtl;
+}
+
+body.lang-ar .breadcrumb-item+.breadcrumb-item::before {
+    float: right;
+    padding-right: 0;
+    padding-left: 0.5rem;
+    content: "\\";
+}
+
+/* Table Alignment */
+body.lang-ar table {
+    direction: rtl;
+}
+
+body.lang-ar th,
+body.lang-ar td {
+    text-align: right;
+}
+
+/* Service Icons */
+body.lang-ar .service .service-icon {
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+/* Thumbnails */
+body.lang-ar .popular-product .product-item-sm .thumbnail {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+/* Custom List */
+body.lang-ar .custom-list li {
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+body.lang-ar .custom-list li:before {
+    left: auto;
+    right: 0;
+}
+
+/* Footer Adjustments */
+body.lang-ar .footer-section .sofa-img {
+    right: auto;
+    left: 0;
+}
+
+/* Feature Icons */
+body.lang-ar .feature .icon:before {
+    right: auto;
+    left: -8px;
+}
+
+/* Dots Background */
+body.lang-ar .why-choose-section .img-wrap:before,
+body.lang-ar .we-help-section .imgs-grid:before {
+    transform: translate(40%, -40%) scaleX(-1);
+}
+
+/* Slider Navigation */
+body.lang-ar #testimonial-nav .prev {
+    left: auto;
+    right: -10px;
+}
+
+body.lang-ar #testimonial-nav .next {
+    right: auto;
+    left: 0;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    body.lang-ar .custom-navbar .custom-navbar-nav li a:before {
+        left: auto;
+        right: 8px;
+    }
+}

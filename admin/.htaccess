@@ -1,0 +1,65 @@
+# This .htaccess file belongs in your Laravel project's root (public_html in your case)
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Prevent direct access to the public_html directory if it's the default document root
+    # This might help prevent 403 errors if the server attempts a directory listing
+    # Options -Indexes # You can uncomment this if you get a 403 and want to be explicit
+
+    # --- LARAVEL IN PUBLIC_HTML REDIRECT RULES ---
+    # Redirect requests for the root domain to the public folder
+    # This is the core fix. It internally rewrites requests like mydomain.com/
+    # to public_html/public/
+    RewriteCond %{REQUEST_URI} !^/public/ [NC] # Don't rewrite if already going to /public/
+    RewriteCond %{REQUEST_FILENAME} !-f # Don't rewrite if a real file exists at the root
+    RewriteCond %{REQUEST_FILENAME} !-d # Don't rewrite if a real directory exists at the root
+    RewriteRule ^(.*)$ public/$1 [L,QSA] # Internally rewrite everything to public/
+
+    # --- Standard Laravel .htaccess rules (these should ideally be in public_html/public/.htaccess) ---
+    # But if your server configuration processes this file first and then the public/ one,
+    # or if some of these rules are needed here, keep them.
+    # The most critical ones are the ones to push everything to public/index.php.
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller (public/index.php) IF NOT ALREADY REWRITTEN ABOVE
+    # This rule is primarily for requests *after* they've been internally routed to public/
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+</IfModule>
+
+# Block direct access to sensitive files/directories outside of public
+<FilesMatch "\.(env|json|md|txt|yaml|yml|log|bak|sql)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to .env (Specific rule, also good to keep)
+<Files ".env">
+    Require all denied
+</Files>
+
+# Allow access to service-worker.js (Specific rule, good to keep)
+<Files "service-worker.js">
+    Require all granted
+</Files>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect root to public/
+    RewriteRule ^$ public/ [L]
+
+    # Redirect all other URIs into public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
