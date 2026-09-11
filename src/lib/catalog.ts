@@ -363,7 +363,9 @@ export const getAllProducts = cache(async (): Promise<Product[]> => {
   return unique;
 });
 
-/** Home arrivals rail — one slim page, not the full catalog walk. */
+/** Home arrivals grid — enough for 3 rows + Show more (4×3 desktop). */
+const HOME_ARRIVALS_LIMIT = 24;
+
 export const getFeaturedProducts = cache(async (): Promise<Product[]> => {
   const mapUnique = (rows: Awaited<ReturnType<typeof fetchProducts>>) => {
     const seen = new Set<string>();
@@ -380,13 +382,17 @@ export const getFeaturedProducts = cache(async (): Promise<Product[]> => {
 
   // Prefer featured; fall back only when the featured set is empty.
   const featured = mapUnique(
-    await fetchProducts({ featured: true, perPage: 12, allPages: false }),
+    await fetchProducts({
+      featured: true,
+      perPage: HOME_ARRIVALS_LIMIT,
+      allPages: false,
+    }),
   );
-  if (featured.length > 0) return featured.slice(0, 12);
+  if (featured.length > 0) return featured.slice(0, HOME_ARRIVALS_LIMIT);
 
   return mapUnique(
-    await fetchProducts({ perPage: 12, allPages: false }),
-  ).slice(0, 12);
+    await fetchProducts({ perPage: HOME_ARRIVALS_LIMIT, allPages: false }),
+  ).slice(0, HOME_ARRIVALS_LIMIT);
 });
 
 /** Build brands/categories index; pass products only when counts are required. */

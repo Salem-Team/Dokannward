@@ -17,11 +17,13 @@ async function resolveApiLocale(): Promise<Locale> {
   if (typeof window !== "undefined") {
     try {
       const match = document.cookie.match(
-        new RegExp(`(?:^|;\\s*)${LOCALE_COOKIE}=([^;]+)`),
+        new RegExp(`(?:^|; )${LOCALE_COOKIE}=([^;]*)`),
       );
-      if (match?.[1]) return parseLocale(decodeURIComponent(match[1]));
+      if (match?.[1]) {
+        return parseLocale(decodeURIComponent(match[1].trim()));
+      }
       const stored = localStorage.getItem(LOCALE_COOKIE);
-      if (stored) return parseLocale(stored);
+      if (stored === "ar" || stored === "en") return stored;
     } catch {
       /* ignore */
     }

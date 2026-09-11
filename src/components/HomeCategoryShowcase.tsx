@@ -71,8 +71,8 @@ export async function HomeCategoryShowcase({
                     <img
                       className="home-category__tile-image"
                       src={
-                        storefrontImageSrc(category.image) ||
                         categoryPublicImageFallback(category.image) ||
+                        storefrontImageSrc(category.image) ||
                         category.image
                       }
                       alt=""

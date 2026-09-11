@@ -22,7 +22,7 @@ import { DokanWardHeroBanner } from "@/components/DokanWardHeroBanner";
 import { HomeBanner, resolveHomeBanners } from "@/components/HomeBanner";
 import { HomeCategoryLogos } from "@/components/HomeCategoryLogos";
 import { HomeCategoryShowcase } from "@/components/HomeCategoryShowcase";
-import { CollectionsProductMarquee } from "@/components/CollectionsProductMarquee";
+import { HomeArrivalsGrid } from "@/components/HomeArrivalsGrid";
 import { BRAND, withHeroCache } from "@/lib/brand";
 import { resolveHomepageCategoryLogos } from "@/lib/homepageCategoryLogos";
 import { PoliciesFaq } from "@/components/PoliciesFaq";
@@ -116,6 +116,9 @@ async function HomeBody() {
   const arrivalItems = gridProducts.map((product) => ({
     product: toProductCardData(product),
     priceLabel: formatPrice(product.price, currency),
+    compareAtLabel: product.compareAtPrice
+      ? formatPrice(product.compareAtPrice, currency)
+      : undefined,
   }));
 
   // Keep idle prefetch lean so it never fights LCP on mid-tier phones.
@@ -167,17 +170,10 @@ async function HomeBody() {
                 </Link>
               </div>
             </Reveal>
+            {arrivalItems.length > 0 ? (
+              <HomeArrivalsGrid items={arrivalItems} />
+            ) : null}
           </div>
-          {arrivalItems.length > 0 ? (
-            <CollectionsProductMarquee
-              items={arrivalItems}
-              label={localizeCmsText(
-                locale,
-                home.arrivals_title,
-                "home.arrivals.title",
-              )}
-            />
-          ) : null}
         </section>
 
         {primaryBanner ? <HomeBanner banner={primaryBanner} /> : null}

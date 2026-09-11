@@ -110,8 +110,8 @@ export function pickHomepageCategoryLogos(
         title: c.name,
         handle: c.slug as string,
         logo:
-          storefrontImageSrc(raw) ||
           categoryPublicImageFallback(raw) ||
+          storefrontImageSrc(raw) ||
           raw,
         href: `/collections/${c.slug}`,
       };
@@ -170,8 +170,8 @@ export function pickFeaturedStorefrontCategories(
         parentMeta?.image?.trim() ||
         "";
       const cover =
-        storefrontImageSrc(rawCover) ||
         categoryPublicImageFallback(rawCover) ||
+        storefrontImageSrc(rawCover) ||
         rawCover;
 
       return {

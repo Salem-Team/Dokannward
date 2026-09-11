@@ -7,6 +7,7 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:${PATH}"
 
 HOST="${DOKANWARD_SSH_HOST:-mtec}"
 REMOTE="${DOKANWARD_REMOTE_PATH:-/var/www/dokannward}"
+PROD_HOST="${PROD_HOST:-dokannward.com}"
 
 echo "==> Push origin/main"
 git push origin HEAD:main
@@ -58,6 +59,7 @@ if [[ -d admin/storage/app/public/products/dokannward ]]; then
 fi
 
 rsync -az scripts/ "${HOST}:${REMOTE}/scripts/"
-ssh -o BatchMode=yes "$HOST" "chmod +x ${REMOTE}/scripts/*.sh && ${REMOTE}/scripts/rebuild-production.sh"
+ssh -o BatchMode=yes "$HOST" \
+  "chmod +x ${REMOTE}/scripts/*.sh && PROD_HOST='${PROD_HOST}' ${REMOTE}/scripts/rebuild-production.sh"
 
-echo "==> Done — https://dokannward.com"
+echo "==> Done — https://${PROD_HOST}"

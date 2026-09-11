@@ -24,13 +24,24 @@ function siteOrigin(): string {
   const fromEnv = (
     process.env.NEXT_PUBLIC_SITE_URL ||
     process.env.NEXT_PUBLIC_STOREFRONT_URL ||
-    "https://dokannward.com"
+    ""
   ).trim();
-  try {
-    return new URL(fromEnv).origin;
-  } catch {
-    return "https://dokannward.com";
+  if (fromEnv) {
+    try {
+      return new URL(fromEnv).origin;
+    } catch {
+      /* fall through */
+    }
   }
+  const api = (process.env.NEXT_PUBLIC_API_URL || "").trim();
+  if (api) {
+    try {
+      return new URL(api).origin;
+    } catch {
+      /* fall through */
+    }
+  }
+  return "https://dokannward.com";
 }
 
 /** True when the storefront talks to a local Laravel API (dev / local serve). */
@@ -129,6 +140,13 @@ export function rewriteStorefrontMediaUrl(src: string): string {
 
     // Keep the public path (+ query for cache-busters) on the live origin.
     if (isMediaPath) {
+      // Category pack ships under Next public/ — prefer it over a wrong APP_URL.
+      const categoryLocal = categoryPublicImageFallback(
+        `${url.pathname}${url.search}`,
+      );
+      if (categoryLocal && url.pathname.includes("/categories/")) {
+        return categoryLocal;
+      }
       return `${siteOrigin()}${url.pathname}${url.search}`;
     }
 

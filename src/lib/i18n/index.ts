@@ -21,7 +21,10 @@ export function t(
   key: string,
   vars?: Record<string, string | number>,
 ): string {
-  const raw = messages[locale][key] ?? messages.en[key] ?? key;
+  // Guard invalid/undefined locale (HMR, bad cookie, missing prop) so
+  // `messages[locale][key]` never throws — e.g. reading 'a11y.skip'.
+  const dict = messages[isLocale(locale) ? locale : DEFAULT_LOCALE] ?? messages.en;
+  const raw = dict[key] ?? messages.en[key] ?? key;
   if (!vars) return raw;
   return Object.entries(vars).reduce(
     (s, [k, v]) => s.replaceAll(`{${k}}`, String(v)),

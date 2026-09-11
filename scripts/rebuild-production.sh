@@ -6,6 +6,8 @@ set -euo pipefail
 APP_ROOT="${APP_ROOT:-/var/www/dokannward}"
 PROD_HOST="${PROD_HOST:-dokannward.com}"
 PROD_ORIGIN="https://${PROD_HOST}"
+# Optional override when edge nginx is not the host systemd unit (ROOTK docker edge).
+NGINX_SNIPPET_DIR="${NGINX_SNIPPET_DIR:-/etc/nginx/snippets}"
 
 cd "$APP_ROOT"
 
@@ -145,9 +147,10 @@ if [[ -f "$APP_ROOT/deploy/nginx/sites/dokannward.com.conf" && -f /etc/nginx/sit
 fi
 
 # Belt-and-suspenders: strip any accidental local public URLs if someone edited env
-python3 - <<'PY'
+python3 - <<PY
 from pathlib import Path
-prod = "https://dokannward.com"
+prod = "${PROD_ORIGIN}"
+app_root = Path("${APP_ROOT}")
 replacements = {
     "APP_URL": prod,
     "ASSET_URL": prod,
@@ -158,7 +161,7 @@ replacements = {
     "CACHE_STORE": "redis",
     "SESSION_DRIVER": "redis",
 }
-admin = Path("/var/www/dokannward/admin/.env")
+admin = app_root / "admin" / ".env"
 text = admin.read_text()
 lines = []
 seen = set()
@@ -175,19 +178,20 @@ for k, v in replacements.items():
         lines.append(f"{k}={v}")
 admin.write_text("\n".join(lines) + "\n")
 
-sf = Path("/var/www/dokannward/.env.production")
+sf = app_root / ".env.production"
+existing = sf.read_text() if sf.exists() else ""
 sf.write_text(
     f"NEXT_PUBLIC_API_URL={prod}/api\n"
     + "\n".join(
-        l for l in sf.read_text().splitlines()
+        l for l in existing.splitlines()
         if l and not l.startswith("NEXT_PUBLIC_API_URL=")
     )
     + "\n"
 )
 # Never keep a .env.local on production
-Path("/var/www/dokannward/.env.local").unlink(missing_ok=True)
-Path("/var/www/dokannward/.env").write_text(sf.read_text())
-print("production URLs enforced")
+(app_root / ".env.local").unlink(missing_ok=True)
+(app_root / ".env").write_text(sf.read_text())
+print("production URLs enforced ->", prod)
 PY
 
 cd "$APP_ROOT/admin"
@@ -213,7 +217,10 @@ chown -R www-data:www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache
 # Drop PHP OPcache so newly compiled Blade views are served immediately.
 # Without this, admin pages can keep rendering the previous deploy's HTML.
-if systemctl is-active --quiet php8.3-fpm 2>/dev/null; then
+if systemctl is-active --quiet php8.4-fpm 2>/dev/null; then
+  systemctl reload php8.4-fpm
+  echo "==> Reloaded php8.4-fpm (OPcache)"
+elif systemctl is-active --quiet php8.3-fpm 2>/dev/null; then
   systemctl reload php8.3-fpm
   echo "==> Reloaded php8.3-fpm (OPcache)"
 elif systemctl is-active --quiet php-fpm 2>/dev/null; then
@@ -243,11 +250,11 @@ echo "==> Pre-build API OK (brands=${api_count})"
 rm -rf .next
 npm ci --no-audit --no-fund
 NODE_OPTIONS='--max-old-space-size=4096' npm run build
+# Bind 0.0.0.0 so ROOTK docker-edge nginx (bridge gateway) can reach Next.
 if pm2 describe dokannward-storefront >/dev/null 2>&1; then
-  pm2 restart dokannward-storefront --update-env
-else
-  pm2 start npm --name dokannward-storefront --cwd "$APP_ROOT" -- start -- -p 3010
+  pm2 delete dokannward-storefront >/dev/null 2>&1 || true
 fi
+pm2 start npm --name dokannward-storefront --cwd "$APP_ROOT" -- start -- --hostname 0.0.0.0 -p 3010
 pm2 save
 
 sleep 2

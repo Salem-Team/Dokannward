@@ -20,6 +20,15 @@ const nextConfig: NextConfig = {
   compress: true,
   reactStrictMode: true,
 
+  // Node 22 + Next's WasmHash can crash mid-build on a stale/.corrupt cache
+  // (`Cannot read properties of undefined (reading 'length')`). Prefer the
+  // pure-JS hasher so `npm run build` / `test:all` stay reliable.
+  webpack: (config) => {
+    config.output = config.output ?? {};
+    config.output.hashFunction = "xxhash64";
+    return config;
+  },
+
   // Hide the on-screen Next.js route/dev indicator in `next dev`.
   // (The empty <nextjs-portal> is Next’s own tooling — not storefront UI.)
   // Build/runtime errors still surface; production builds never include this.
