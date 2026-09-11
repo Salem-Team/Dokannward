@@ -4,7 +4,7 @@
 set -euo pipefail
 
 APP_ROOT="${APP_ROOT:-/var/www/dokannward}"
-PROD_HOST="${PROD_HOST:-dokannward.com}"
+PROD_HOST="${PROD_HOST:-dokanward.rootk-eg.com}"
 PROD_ORIGIN="https://${PROD_HOST}"
 # Optional override when edge nginx is not the host systemd unit (ROOTK docker edge).
 NGINX_SNIPPET_DIR="${NGINX_SNIPPET_DIR:-/etc/nginx/snippets}"

@@ -5,9 +5,10 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:${PATH}"
 
-HOST="${DOKANWARD_SSH_HOST:-mtec}"
+HOST="${DOKANWARD_SSH_HOST:-zibra}"
 REMOTE="${DOKANWARD_REMOTE_PATH:-/var/www/dokannward}"
-PROD_HOST="${PROD_HOST:-dokannward.com}"
+# Live Next.js stack is on the ROOTK VPS; dokannward.com is still the Hostinger WP site.
+PROD_HOST="${PROD_HOST:-dokanward.rootk-eg.com}"
 
 echo "==> Push origin/main"
 git push origin HEAD:main
