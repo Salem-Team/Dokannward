@@ -8,6 +8,27 @@ PROD_HOST="${PROD_HOST:-dokanward.rootk-eg.com}"
 PROD_ORIGIN="https://${PROD_HOST}"
 # Optional override when edge nginx is not the host systemd unit (ROOTK docker edge).
 NGINX_SNIPPET_DIR="${NGINX_SNIPPET_DIR:-/etc/nginx/snippets}"
+NGINX_DOCKER="${NGINX_DOCKER:-rootk-prod-nginx}"
+
+reload_nginx() {
+  if systemctl is-active --quiet nginx 2>/dev/null; then
+    systemctl reload nginx
+    echo "==> Reloaded systemd nginx"
+    return 0
+  fi
+  if command -v docker >/dev/null 2>&1 && docker ps --format '{{.Names}}' 2>/dev/null | grep -qx "$NGINX_DOCKER"; then
+    if docker exec "$NGINX_DOCKER" nginx -t 2>/tmp/dokannward-docker-nginx-test.log; then
+      docker exec "$NGINX_DOCKER" nginx -s reload
+      echo "==> Reloaded docker nginx ($NGINX_DOCKER)"
+      return 0
+    fi
+    echo "WARN: docker nginx -t failed — left previous config"
+    cat /tmp/dokannward-docker-nginx-test.log >&2 || true
+    return 1
+  fi
+  echo "WARN: no active nginx service/container to reload — continuing deploy"
+  return 0
+}
 
 cd "$APP_ROOT"
 
@@ -74,8 +95,7 @@ if [[ -f "$APP_ROOT/deploy/nginx/dokannward-app.conf" && -d /etc/nginx/snippets 
   fi
   cp "$APP_ROOT/deploy/nginx/dokannward-app.conf" "$snippet_target"
   if nginx -t 2>/tmp/dokannward-nginx-test.log; then
-    systemctl reload nginx
-    echo "==> Reloaded nginx"
+    reload_nginx || true
   else
     echo "WARN: nginx -t failed after syncing dokannward-app.conf — restoring previous snippet and continuing deploy"
     cat /tmp/dokannward-nginx-test.log >&2 || true
@@ -137,7 +157,7 @@ if [[ -f "$APP_ROOT/deploy/nginx/sites/dokannward.com.conf" && -f /etc/nginx/sit
         /etc/nginx/sites-available/dokannward.com
     fi
     if nginx -t 2>/tmp/dokannward-nginx-body.log; then
-      systemctl reload nginx
+      reload_nginx || true
       echo "==> nginx client_max_body_size -> 4g (body timeout 1800s)"
     else
       echo "WARN: nginx -t failed after body-size tweak; left previous config"
