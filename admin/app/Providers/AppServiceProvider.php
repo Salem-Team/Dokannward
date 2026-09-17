@@ -9,6 +9,7 @@ use App\Models\ProductReview;
 use App\Services\Branding\BrandingService;
 use App\Services\NavBadge;
 use App\Support\Branding;
+use App\Support\PublicUrl;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -78,15 +79,27 @@ class AppServiceProvider extends ServiceProvider
         View::composer(['admin.*', 'errors.*'], function ($view) {
             $branding = Branding::all();
             $tenant = Branding::tenantBranding();
+            // Brand logos + icons are served with a 1-year immutable Cache-Control.
+            // Bump this stamp whenever seal / favicon assets are replaced in place.
+            $logoStamp = 'dw2';
 
             $view->with([
                 'branding' => $branding,
                 'tenantBranding' => $tenant,
                 'brandDisplayName' => $tenant['displayName'] ?: ($branding['company_name'] ?? 'Default Company'),
-                'brandLogoUrl' => $tenant['logoLightUrl'] ?: ($branding['logo_light_url'] ?? asset('images/brand-logo.png')),
-                'brandLogoOnDarkUrl' => $tenant['logoDarkUrl']
-                    ?: ($branding['logo_dark_url'] ?? asset('images/brand-logo-on-dark.png')),
-                'brandFaviconUrl' => $tenant['faviconUrl'] ?: ($branding['favicon_url'] ?? asset('favicon.ico')),
+                'brandLogoUrl' => PublicUrl::versioned(
+                    $tenant['logoLightUrl'] ?: ($branding['logo_light_url'] ?? asset('images/brand-logo.png')),
+                    $logoStamp,
+                ),
+                'brandLogoOnDarkUrl' => PublicUrl::versioned(
+                    $tenant['logoDarkUrl']
+                        ?: ($branding['logo_dark_url'] ?? asset('images/brand-logo-on-dark.png')),
+                    $logoStamp,
+                ),
+                'brandFaviconUrl' => PublicUrl::versioned(
+                    $tenant['faviconUrl'] ?: ($branding['favicon_url'] ?? asset('favicon.ico')),
+                    $logoStamp,
+                ),
                 'brandCssVariables' => app(BrandingService::class)->cssVariables(),
             ]);
         });
