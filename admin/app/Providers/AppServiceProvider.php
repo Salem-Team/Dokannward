@@ -81,7 +81,7 @@ class AppServiceProvider extends ServiceProvider
             $tenant = Branding::tenantBranding();
             // Brand logos + icons are served with a 1-year immutable Cache-Control.
             // Bump this stamp whenever seal / favicon assets are replaced in place.
-            $logoStamp = 'dw2';
+            $logoStamp = 'dw3';
 
             $view->with([
                 'branding' => $branding,

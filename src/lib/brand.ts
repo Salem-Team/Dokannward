@@ -28,9 +28,41 @@ const displayNameAr =
     "ROOTK_TENANT_DISPLAY_NAME_AR",
   ) || "الشركة الافتراضية";
 
-const logoLight =
+/**
+ * Brand logos under /images and /branding are served with a 1-year immutable
+ * Cache-Control. Replacing the file in place leaves browsers (and raw <img>
+ * tags on empty-cart / loaders) stuck on a previous tenant's logo.
+ * Bump LOGO_CACHE whenever seal / wordmark assets change.
+ */
+export const LOGO_CACHE = "v3";
+
+export function withLogoCache(src: string): string {
+  if (!src) return src;
+  if (/^https?:\/\//i.test(src)) return src;
+  const [path, query = ""] = src.split("?");
+  const base = path || src;
+  if (
+    !base.startsWith("/images/brand-logo") &&
+    !base.startsWith("/images/dokan-ward-logo") &&
+    !base.startsWith("/branding/")
+  ) {
+    return src;
+  }
+  if (query.includes(LOGO_CACHE) || /(?:^|&)v\d+(?:&|$)/.test(query)) {
+    return src;
+  }
+  return query ? `${base}?${query}&${LOGO_CACHE}` : `${base}?${LOGO_CACHE}`;
+}
+
+const logoLight = withLogoCache(
   envStr("NEXT_PUBLIC_ROOTK_TENANT_LOGO_URL", "ROOTK_TENANT_LOGO_URL") ||
-  "/images/brand-logo.png";
+    "/images/brand-logo.png",
+);
+
+const logoOnDark = withLogoCache(
+  envStr("NEXT_PUBLIC_ROOTK_TENANT_LOGO_URL", "ROOTK_TENANT_LOGO_URL") ||
+    "/images/brand-logo-on-dark.png",
+);
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -49,9 +81,7 @@ export const BRAND = {
   url: siteUrl,
   currency: "EGP",
   logo: logoLight,
-  logoOnDark:
-    envStr("NEXT_PUBLIC_ROOTK_TENANT_LOGO_URL", "ROOTK_TENANT_LOGO_URL") ||
-    "/images/brand-logo-on-dark.png",
+  logoOnDark,
   announcement: "Shop our latest arrivals!",
   title: `${bilingualTitle} — Home Decor`,
   titleAr: `${displayNameAr} | ${displayName} — ديكور منزلي`,
@@ -77,32 +107,6 @@ export const BRAND = {
 
 /** Cache-buster for hero assets when paths are the built-in defaults. */
 export const HERO_CACHE = "v7";
-
-/**
- * Brand logos under /images and /branding are served with a 1-year immutable
- * Cache-Control. Replacing the file in place leaves browsers (and raw <img>
- * tags on empty-cart / order-success) stuck on a previous tenant's logo.
- * Bump LOGO_CACHE whenever seal / wordmark assets change.
- */
-export const LOGO_CACHE = "v2";
-
-export function withLogoCache(src: string): string {
-  if (!src) return src;
-  if (/^https?:\/\//i.test(src)) return src;
-  const [path, query = ""] = src.split("?");
-  const base = path || src;
-  if (
-    !base.startsWith("/images/brand-logo") &&
-    !base.startsWith("/images/dokan-ward-logo") &&
-    !base.startsWith("/branding/")
-  ) {
-    return src;
-  }
-  if (/(?:^|&)v\d+(?:&|$)/.test(query) || query === LOGO_CACHE) {
-    return src;
-  }
-  return query ? `${base}?${query}&${LOGO_CACHE}` : `${base}?${LOGO_CACHE}`;
-}
 
 export function withHeroCache(src: string): string {
   if (!src) return src;

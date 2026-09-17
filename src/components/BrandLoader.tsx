@@ -1,6 +1,6 @@
 "use client";
 
-import { BRAND } from "@/lib/brand";
+import { BRAND, withLogoCache } from "@/lib/brand";
 import { useLocale } from "@/context/locale";
 
 /** Presentational brand loader — cream seal + soft bronze pulse. */
@@ -16,7 +16,7 @@ export function BrandLoader({
   brandName?: string;
 }) {
   const { t } = useLocale();
-  const src = logoSrc?.trim() || BRAND.logo;
+  const src = withLogoCache(logoSrc?.trim() || BRAND.logo);
   const name = brandName?.trim() || BRAND.name;
   const resolvedLabel = label ?? t("loading.default");
 
@@ -32,7 +32,6 @@ export function BrandLoader({
         <span className="brand-loader__ring" />
         <span className="brand-loader__ring brand-loader__ring--delayed" />
         <div className="brand-loader__logo-wrap">
-          { }
           <img
             src={src}
             alt={name}

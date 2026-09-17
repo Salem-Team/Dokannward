@@ -1,8 +1,9 @@
 /* Dokan Ward admin static asset cache.
    - /build/*  → network-first (deploys must win immediately)
-   - images/fonts → stale-while-revalidate
+   - brand logos / favicons / apple icons → network-only (never pin a wrong tenant mark)
+   - other images/fonts → stale-while-revalidate
    Never caches HTML or this script. */
-const CACHE = 'dokannward-admin-static-v10';
+const CACHE = 'dokannward-admin-static-v11';
 
 self.addEventListener('install', () => {
   self.skipWaiting();
@@ -15,6 +16,19 @@ self.addEventListener('activate', (event) => {
     ).then(() => self.clients.claim()),
   );
 });
+
+function isBrandChrome(path) {
+  return (
+    path.startsWith('/images/brand-logo') ||
+    path.startsWith('/images/dokan-ward-logo') ||
+    path.startsWith('/branding/') ||
+    path === '/apple-icon.png' ||
+    path === '/apple-touch-icon.png' ||
+    path === '/favicon.ico' ||
+    /^\/favicon-\d+x\d+\.png$/.test(path) ||
+    /^\/icon-\d+\.png$/.test(path)
+  );
+}
 
 self.addEventListener('fetch', (event) => {
   const req = event.request;
@@ -33,6 +47,12 @@ self.addEventListener('fetch', (event) => {
   if (path === '/sw-admin.js') return;
   if (req.mode === 'navigate') return;
   if ((req.headers.get('accept') || '').includes('text/html')) return;
+
+  // Brand chrome must never be served from a stale cross-tenant SW entry.
+  if (isBrandChrome(path)) {
+    event.respondWith(fetch(req));
+    return;
+  }
 
   if (path.startsWith('/build/')) {
     event.respondWith(networkFirst(req));

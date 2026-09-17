@@ -169,7 +169,7 @@
   filter: drop-shadow(0 14px 22px rgb(0 0 0 / 0.14));
 }
 .brand-loader__logo { width: 100%; height: 100%; object-fit: contain; }
-.dark .brand-loader__logo { filter: invert(1); }
+.dark .brand-loader__logo { filter: none; }
 .brand-loader__shine { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
 .brand-loader__shine::before {
   content: ""; position: absolute; top: -10%; bottom: -10%; left: 0; width: 42%;

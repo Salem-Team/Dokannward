@@ -129,7 +129,7 @@
             window.addEventListener('load', function () {
                 // Bust query forces browsers to re-fetch SW after deploys.
                 navigator.serviceWorker
-                    .register('/sw-admin.js?v=10', { scope: '/admin' })
+                    .register('/sw-admin.js?v=11', { scope: '/admin' })
                     .catch(function () {});
             });
         }
