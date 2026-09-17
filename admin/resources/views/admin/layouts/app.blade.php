@@ -33,6 +33,7 @@
 
     <style>
         .turbo-progress-bar { display: none !important; visibility: hidden !important; }
+        :root { {!! $brandCssVariables ?? '' !!} }
     </style>
 
     {{-- Font Awesome kept deferred; Alpine/Turbo ship from the Vite bundle above. --}}

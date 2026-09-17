@@ -22,6 +22,15 @@
                 </span>
             </button>
 
+            <a href="{{ route('admin.dashboard') }}" class="admin-topbar__brand" aria-label="{{ $brandDisplayName ?? 'Store' }} admin">
+                <img src="{{ $brandLogoUrl ?? asset('images/brand-logo.png') }}"
+                    alt="{{ $brandDisplayName ?? 'Store' }}"
+                    class="admin-topbar__brand-logo"
+                    width="36"
+                    height="36">
+                <span class="admin-topbar__brand-name">{{ $brandDisplayName ?? 'Store' }}</span>
+            </a>
+
             <div class="admin-topbar__search"
                 x-data="deskSearch()"
                 @keydown.escape.window="close()"

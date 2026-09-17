@@ -6,18 +6,24 @@
     $hour = (int) now()->format('G');
     $greeting = $hour < 12 ? 'Good morning' : ($hour < 18 ? 'Good afternoon' : 'Good evening');
     $adminName = auth()->user()?->name ?? 'Administrator';
+    $storeName = $brandDisplayName ?? 'Store';
 @endphp
 
 @push('styles')
     <style>
         .dash {
             --dash-ease: cubic-bezier(0.16, 1, 0.3, 1);
-            /* Oxblood garnet — luxury accent against Dokan Ward ink/paper */
-            --dash-red: #9e1b2e;
-            --dash-red-deep: #7a1423;
-            --dash-red-soft: #c45a68;
-            --dash-red-mist: rgb(158 27 46 / 0.1);
-            --dash-red-glow: rgb(158 27 46 / 0.42);
+            /* Tenant brand — bronze / cream identity */
+            --dash-brand: var(--brand-primary, #532904);
+            --dash-brand-deep: var(--brand-primary-hover, #3d1f03);
+            --dash-brand-soft: var(--brand-secondary, #debcad);
+            --dash-brand-mist: color-mix(in srgb, var(--dash-brand) 14%, transparent);
+            --dash-brand-glow: color-mix(in srgb, var(--dash-brand) 45%, transparent);
+            --dash-red: var(--dash-brand);
+            --dash-red-deep: var(--dash-brand-deep);
+            --dash-red-soft: var(--dash-brand-soft);
+            --dash-red-mist: var(--dash-brand-mist);
+            --dash-red-glow: var(--dash-brand-glow);
         }
 
         .dash-reveal {
@@ -45,17 +51,17 @@
         }
 
         @keyframes dash-pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgb(158 27 46 / 0.55); }
-            50% { opacity: 0.7; transform: scale(0.88); box-shadow: 0 0 0 7px rgb(158 27 46 / 0); }
+            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 color-mix(in srgb, var(--dash-brand) 55%, transparent); }
+            50% { opacity: 0.7; transform: scale(0.88); box-shadow: 0 0 0 7px transparent; }
         }
 
         .dash-hero {
             position: relative;
             overflow: hidden;
-            border: 1px solid #dcdcdc;
+            border: 1px solid color-mix(in srgb, var(--dash-brand-soft) 55%, #dcdcdc);
             background:
-                radial-gradient(ellipse 55% 80% at 100% 0%, rgb(158 27 46 / 0.28), transparent 55%),
-                linear-gradient(135deg, #0a0a0a 0%, #141014 42%, #1c1214 72%, #2a1a1e 100%);
+                radial-gradient(ellipse 55% 80% at 100% 0%, color-mix(in srgb, var(--dash-brand) 32%, transparent), transparent 55%),
+                linear-gradient(135deg, #2a1a10 0%, #3a2a1a 42%, #4a3424 72%, #532904 100%);
             color: #fff;
         }
 
@@ -67,14 +73,14 @@
             position: absolute;
             inset: 0;
             pointer-events: none;
-            opacity: 0.09;
+            opacity: 0.07;
             background:
                 repeating-linear-gradient(
                     -18deg,
                     transparent 0,
-                    transparent 10px,
-                    #fff 10px,
-                    #fff 11px
+                    transparent 12px,
+                    color-mix(in srgb, var(--dash-brand-soft) 70%, #fff) 12px,
+                    color-mix(in srgb, var(--dash-brand-soft) 70%, #fff) 13px
                 );
         }
 
@@ -85,7 +91,7 @@
             right: -120px;
             top: -160px;
             border-radius: 9999px;
-            background: radial-gradient(circle, var(--dash-red-glow), transparent 68%);
+            background: radial-gradient(circle, var(--dash-brand-glow), transparent 68%);
             pointer-events: none;
         }
 
@@ -95,19 +101,31 @@
             top: 0;
             bottom: 0;
             width: 3px;
-            background: linear-gradient(180deg, var(--dash-red-soft), var(--dash-red) 40%, var(--dash-red-deep));
+            background: linear-gradient(180deg, var(--dash-brand-soft), var(--dash-brand) 40%, var(--dash-brand-deep));
         }
 
         .dash-hero__rule {
             height: 1px;
             background: linear-gradient(
                 90deg,
-                var(--dash-red) 0%,
+                var(--dash-brand-soft) 0%,
                 rgb(255 255 255 / 0.22) 28%,
                 rgb(255 255 255 / 0.08) 100%
             );
             transform-origin: left;
             animation: dash-stripe 1.1s var(--dash-ease) 0.2s both;
+        }
+
+        .dash-hero__seal {
+            display: block;
+            width: 52px;
+            height: 52px;
+            object-fit: cover;
+            border-radius: 9999px;
+            background: #fefdf9;
+            box-shadow:
+                0 0 0 1px color-mix(in srgb, var(--dash-brand-soft) 65%, transparent),
+                0 8px 22px rgb(0 0 0 / 0.28);
         }
 
         .dash-label {
@@ -129,7 +147,7 @@
         }
 
         .dash-panel:hover {
-            border-color: rgb(158 27 46 / 0.45);
+            border-color: color-mix(in srgb, var(--dash-brand) 45%, transparent);
             box-shadow: 0 0 0 1px var(--dash-red-mist);
         }
 
@@ -173,12 +191,12 @@
             height: 7px;
             border-radius: 9999px;
             background: var(--dash-red-soft);
-            box-shadow: 0 0 0 0 rgb(158 27 46 / 0.45);
+            box-shadow: 0 0 0 0 color-mix(in srgb, var(--dash-brand) 45%, transparent);
             animation: dash-pulse-dot 1.8s ease-in-out infinite;
         }
 
         .dash-hero__tile--alert {
-            background: linear-gradient(160deg, rgb(158 27 46 / 0.35), rgb(0 0 0 / 0.35));
+            background: linear-gradient(160deg, color-mix(in srgb, var(--dash-brand) 40%, transparent), rgb(0 0 0 / 0.35));
             box-shadow: inset 0 0 0 1px rgb(196 90 104 / 0.35);
         }
 
@@ -213,7 +231,7 @@
         }
 
         .dark .dash-row:hover {
-            background: linear-gradient(90deg, rgb(158 27 46 / 0.14), rgb(17 24 39 / 0.55) 45%);
+            background: linear-gradient(90deg, color-mix(in srgb, var(--dash-brand) 18%, transparent), rgb(17 24 39 / 0.55) 45%);
         }
 
         .dash-thumb {
@@ -257,7 +275,7 @@
             color: #fff;
             background: var(--dash-red);
             border-color: var(--dash-red);
-            box-shadow: 0 8px 22px rgb(158 27 46 / 0.22);
+            box-shadow: 0 8px 22px color-mix(in srgb, var(--dash-brand) 22%, transparent);
             transform: translateY(-1px);
         }
 
@@ -347,7 +365,7 @@
             color: #fff;
             background: var(--dash-red);
             border-color: var(--dash-red);
-            box-shadow: 0 12px 30px rgb(158 27 46 / 0.38);
+            box-shadow: 0 12px 30px color-mix(in srgb, var(--dash-brand) 38%, transparent);
             transform: translateY(-1px);
         }
 
@@ -474,18 +492,21 @@
                 <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
                     <div class="max-w-2xl">
                         <div class="flex items-center gap-3 mb-5">
-                            <img src="{{ ($brandLogoOnDarkUrl ?? asset('images/brand-logo-on-dark.png')) }}"
-                                alt="{{ $brandDisplayName ?? 'Store' }}" class="h-7 w-auto opacity-95">
+                            <img src="{{ $brandLogoUrl ?? asset('images/brand-logo.png') }}"
+                                alt="{{ $storeName }}"
+                                class="dash-hero__seal"
+                                width="52"
+                                height="52">
                             <span class="dash-live" aria-hidden="true"></span>
                             <span class="text-[10px] uppercase tracking-[0.22em] text-white/45">Live commerce</span>
                         </div>
 
                         <p class="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-3">{{ $greeting }}</p>
                         <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-white leading-tight">
-                            {{ $adminName }}
+                            {{ $storeName }}
                         </h1>
                         <p class="mt-3 text-sm text-white/65 max-w-lg leading-relaxed">
-                            {{ $brandDisplayName ?? 'Store' }} Admin — a precise read of revenue, orders, and inventory, aligned with the storefront experience.
+                            {{ $greeting }}, {{ $adminName }} — revenue, orders, and inventory aligned with the storefront.
                         </p>
                     </div>
 
@@ -863,7 +884,7 @@
                 var ash = '#6b6b6b';
                 var mist = '#ececec';
                 var graphite = '#2a2a2a';
-                var red = '#9e1b2e';
+                var red = getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim() || '#532904';
                 var redSoft = '#c45a68';
                 var isDark = document.documentElement.classList.contains('dark');
                 var tick = isDark ? '#9ca3af' : ash;

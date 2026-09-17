@@ -34,7 +34,7 @@
                 <a href="{{ route('admin.dashboard') }}" class="admin-sidebar__brand-link group min-w-0" @click="closeSidebar()">
                     <img src="{{ ($brandLogoUrl ?? asset('images/brand-logo.png')) }}" alt="{{ $brandDisplayName ?? 'Store' }}"
                         class="admin-sidebar__logo">
-                    <p class="admin-sidebar-brand">Admin · Commerce</p>
+                    <p class="admin-sidebar-brand">{{ $brandDisplayName ?? 'Store' }} · Admin</p>
                 </a>
                 <button type="button" class="admin-drawer__close" @click="closeSidebar()" aria-label="Close menu">
                     <i class="fas fa-times" aria-hidden="true"></i>

@@ -805,6 +805,52 @@ html[dir="rtl"] .admin-drawer-panel-leave-end {
     flex: 1 1 auto;
 }
 
+.admin-topbar__brand {
+    display: none;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: inherit;
+    min-width: 0;
+}
+
+.admin-topbar__brand-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 9999px;
+    background: #fefdf9;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--brand-secondary, #debcad) 70%, #d0d0d0);
+    flex-shrink: 0;
+}
+
+.admin-topbar__brand-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--color-zibra-ink, #1a1a1a);
+}
+
+.dark .admin-topbar__brand-name {
+    color: #fff;
+}
+
+@media (min-width: 640px) {
+    .admin-topbar__brand {
+        display: inline-flex;
+        max-width: 11rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .admin-topbar__brand {
+        max-width: 14rem;
+    }
+}
+
 .admin-topbar__search {
     position: relative;
     display: block;
@@ -1950,15 +1996,22 @@ html[dir="rtl"] .admin-sidebar__edge {
 }
 
 .admin-sidebar__logo {
-    height: 2rem;
-    width: auto;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-    transition: opacity 0.45s var(--sidebar-ease, var(--ease-luxury));
+    display: block;
+    height: 3rem;
+    width: 3rem;
+    object-fit: cover;
+    border-radius: 9999px;
+    background: #fefdf9;
+    box-shadow:
+        0 0 0 1px rgb(222 188 173 / 0.55),
+        0 4px 14px rgb(0 0 0 / 0.25);
+    filter: none;
+    transition: opacity 0.45s var(--sidebar-ease, var(--ease-luxury)), transform 0.45s var(--sidebar-ease, var(--ease-luxury));
 }
 
 .admin-sidebar__brand-link:hover .admin-sidebar__logo {
-    opacity: 0.82;
+    opacity: 1;
+    transform: scale(1.04);
 }
 
 .admin-sidebar-brand {
@@ -1976,11 +2029,12 @@ html[dir="rtl"] .admin-sidebar__edge {
     right: 0;
     bottom: 0;
     height: 3px;
-    background: var(--sidebar-zebra, repeating-linear-gradient(
+    background: linear-gradient(
         90deg,
-        var(--color-white) 0 6px,
-        var(--color-black) 6px 12px
-    ));
+        var(--brand-primary, #532904) 0%,
+        var(--brand-secondary, #debcad) 52%,
+        var(--brand-accent, #3D2E26) 100%
+    );
     pointer-events: none;
 }
 
