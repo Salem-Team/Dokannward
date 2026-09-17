@@ -12,5 +12,7 @@ describe("t", () => {
     expect(t(undefined as unknown as "en", "a11y.skip")).toBe(
       "Skip to content",
     );
+    expect(t(null as unknown as "en", "a11y.skip")).toBe("Skip to content");
+    expect(t("" as "en", "missing.key")).toBe("missing.key");
   });
 });

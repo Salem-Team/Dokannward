@@ -32,7 +32,7 @@ export function BrandLoader({
         <span className="brand-loader__ring" />
         <span className="brand-loader__ring brand-loader__ring--delayed" />
         <div className="brand-loader__logo-wrap">
-          {/* eslint-disable-next-line @next/next/no-img-element -- loader may run outside next/image cache */}
+          { }
           <img
             src={src}
             alt={name}

@@ -144,13 +144,16 @@ export function LocaleProvider({
   );
 
   const value = useMemo<LocaleContextValue>(
-    () => ({
-      locale,
-      setLocale,
-      t: (key, vars) => translate(locale, key, vars),
-      localizeLabel: (label, href) => localizeLabel(locale, label, href),
-      isRtl: locale === "ar",
-    }),
+    () => {
+      const safe = isLocale(locale) ? locale : DEFAULT_LOCALE;
+      return {
+        locale: safe,
+        setLocale,
+        t: (key, vars) => translate(safe, key, vars),
+        localizeLabel: (label, href) => localizeLabel(safe, label, href),
+        isRtl: safe === "ar",
+      };
+    },
     [locale, setLocale],
   );
 

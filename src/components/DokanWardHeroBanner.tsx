@@ -68,7 +68,7 @@ export function DokanWardHeroBanner({
           <span className="dokan-hero__logo-aura" aria-hidden="true" />
           <span className="dokan-hero__logo-ring" aria-hidden="true" />
           <span className="dokan-hero__logo-disc" aria-hidden="true" />
-          {/* eslint-disable-next-line @next/next/no-img-element -- circular emblem stays crisp outside the optimizer */}
+          { }
           <img
             className="dokan-hero__logo"
             src={emblem}

@@ -85,7 +85,7 @@ export function HomeCategoryLogos({
         return;
       }
 
-      let next = Math.min(0, Math.max(-max, offsetRef.current));
+      const next = Math.min(0, Math.max(-max, offsetRef.current));
       offsetRef.current = next;
       track.style.transform = `translate3d(${next}px, 0, 0)`;
     };

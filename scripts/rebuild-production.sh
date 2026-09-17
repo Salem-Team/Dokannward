@@ -3,12 +3,19 @@
 # Used after rsync/git update of application code.
 set -euo pipefail
 
-APP_ROOT="${APP_ROOT:-/var/www/dokannward}"
-PROD_HOST="${PROD_HOST:-dokanward.rootk-eg.com}"
+APP_ROOT="${APP_ROOT:-/var/www/dokan-ward}"
+PROD_HOST="${PROD_HOST:-dokan-ward.rootk-eg.com}"
 PROD_ORIGIN="https://${PROD_HOST}"
 # Optional override when edge nginx is not the host systemd unit (ROOTK docker edge).
 NGINX_SNIPPET_DIR="${NGINX_SNIPPET_DIR:-/etc/nginx/snippets}"
 NGINX_DOCKER="${NGINX_DOCKER:-rootk-prod-nginx}"
+# Live ROOTK tenant process name; legacy path keeps the older name.
+if [[ "$APP_ROOT" == *"/dokan-ward" ]]; then
+  PM2_NAME="${PM2_NAME:-dokan-ward-storefront}"
+else
+  PM2_NAME="${PM2_NAME:-dokannward-storefront}"
+fi
+SKIP_PM2="${SKIP_PM2:-0}"
 
 reload_nginx() {
   if systemctl is-active --quiet nginx 2>/dev/null; then
@@ -270,12 +277,26 @@ echo "==> Pre-build API OK (brands=${api_count})"
 rm -rf .next
 npm ci --no-audit --no-fund
 NODE_OPTIONS='--max-old-space-size=4096' npm run build
-# Bind 0.0.0.0 so ROOTK docker-edge nginx (bridge gateway) can reach Next.
-if pm2 describe dokannward-storefront >/dev/null 2>&1; then
-  pm2 delete dokannward-storefront >/dev/null 2>&1 || true
+
+if [[ "$SKIP_PM2" == "1" ]]; then
+  echo "==> SKIP_PM2=1 — built ${APP_ROOT} without touching PM2"
+else
+  # Bind 0.0.0.0 so ROOTK docker-edge nginx (bridge gateway) can reach Next.
+  # Retire the other process name if it still owns this cwd/port.
+  for legacy in dokannward-storefront dokan-ward-storefront; do
+    if [[ "$legacy" != "$PM2_NAME" ]] && pm2 describe "$legacy" >/dev/null 2>&1; then
+      legacy_cwd="$(pm2 show "$legacy" 2>/dev/null | awk -F'│' '/exec cwd/ {gsub(/ /,"",$2); print $2}' | head -1 || true)"
+      if [[ -z "$legacy_cwd" || "$legacy_cwd" == "$APP_ROOT" ]]; then
+        pm2 delete "$legacy" >/dev/null 2>&1 || true
+      fi
+    fi
+  done
+  if pm2 describe "$PM2_NAME" >/dev/null 2>&1; then
+    pm2 delete "$PM2_NAME" >/dev/null 2>&1 || true
+  fi
+  pm2 start npm --name "$PM2_NAME" --cwd "$APP_ROOT" -- start -- --hostname 0.0.0.0 -p 3010
+  pm2 save
 fi
-pm2 start npm --name dokannward-storefront --cwd "$APP_ROOT" -- start -- --hostname 0.0.0.0 -p 3010
-pm2 save
 
 sleep 2
 login_html="$(curl -fsS "https://${PROD_HOST}/admin/login")"

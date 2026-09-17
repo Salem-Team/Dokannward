@@ -1,9 +1,5 @@
 import { messages, LABEL_KEYS, HREF_LABEL_KEYS } from "./messages";
-import {
-  DEFAULT_LOCALE,
-  LOCALE_COOKIE,
-  type Locale,
-} from "./types";
+import { DEFAULT_LOCALE, type Locale } from "./types";
 
 export type { Locale } from "./types";
 export { DEFAULT_LOCALE, LOCALE_COOKIE, LOCALES } from "./types";
@@ -21,10 +17,18 @@ export function t(
   key: string,
   vars?: Record<string, string | number>,
 ): string {
-  // Guard invalid/undefined locale (HMR, bad cookie, missing prop) so
-  // `messages[locale][key]` never throws — e.g. reading 'a11y.skip'.
-  const dict = messages[isLocale(locale) ? locale : DEFAULT_LOCALE] ?? messages.en;
-  const raw = dict[key] ?? messages.en[key] ?? key;
+  // Never throw on bad locale / partial HMR of `messages` — SkipLink calls
+  // t("a11y.skip") on every paint, so a missing dict would blank the app.
+  const safeLocale = isLocale(locale) ? locale : DEFAULT_LOCALE;
+  const primary = messages?.[safeLocale];
+  const english = messages?.en;
+  const arabic = messages?.ar;
+  const dict = primary ?? english ?? arabic;
+  const raw =
+    (dict && dict[key]) ||
+    (english && english[key]) ||
+    (arabic && arabic[key]) ||
+    key;
   if (!vars) return raw;
   return Object.entries(vars).reduce(
     (s, [k, v]) => s.replaceAll(`{${k}}`, String(v)),
@@ -58,7 +62,7 @@ export function localizeCmsText(
   const mapped = LABEL_KEYS[fallback];
   if (mapped) return t(locale, mapped);
   // If CMS still has the English default that matches our key's EN string, swap
-  if (fallback && fallback === messages.en[key]) return t(locale, key);
+  if (fallback && fallback === messages.en?.[key]) return t(locale, key);
   if (!fallback) return t(locale, key);
   return fallback;
 }

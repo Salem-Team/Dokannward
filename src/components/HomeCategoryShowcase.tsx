@@ -67,7 +67,7 @@ export async function HomeCategoryShowcase({
                   className="home-category__tile-link"
                 >
                   <span className="home-category__tile-media" aria-hidden="true">
-                    {/* eslint-disable-next-line @next/next/no-img-element -- Laravel /storage skips the optimizer */}
+                    { }
                     <img
                       className="home-category__tile-image"
                       src={

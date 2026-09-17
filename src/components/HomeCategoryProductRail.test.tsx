@@ -6,7 +6,7 @@ import type { ProductCardData } from "@/lib/product-card";
 
 vi.mock("next/image", () => ({
   default: (props: { alt?: string; src?: string }) => (
-    // eslint-disable-next-line @next/next/no-img-element
+     
     <img alt={props.alt ?? ""} src={typeof props.src === "string" ? props.src : ""} />
   ),
 }));

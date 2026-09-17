@@ -85,7 +85,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Stand clock&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2474",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2474",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -192,7 +192,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Elegant horse sculpture&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2463",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2463",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -343,7 +343,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Amber crystal candle holder set – 2 pieces&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2461",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2461",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -461,7 +461,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Ceramic tissue box&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2445",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2445",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -590,7 +590,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Stainless steel tray&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2442",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2442",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -708,7 +708,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Benjamina Tree&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2426",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2426",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -826,7 +826,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Black vase&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2423",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2423",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -944,7 +944,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;مبخره&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2420",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2420",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -1051,7 +1051,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Small plant&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2417",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2417",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -1180,7 +1180,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Sets of vases&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2415",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2415",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -1298,7 +1298,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;مبخره خزف&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2411",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2411",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -1427,7 +1427,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Jasmine Tree&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2406",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2406",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -1534,7 +1534,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Clock&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2397",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2397",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -1674,7 +1674,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Stand clock&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2395",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2395",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -1792,7 +1792,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Clock&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2390",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2390",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -1899,7 +1899,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Clock&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2387",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2387",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -2006,7 +2006,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Clock&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2385",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2385",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -2360,7 +2360,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Set of  large  2 vases&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2279",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2279",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -2478,7 +2478,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Small plants with flowers&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2271",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2271",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 6,
@@ -2607,7 +2607,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Artificial Willow tree&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2260",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2260",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 6,
@@ -2725,7 +2725,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Steel clock&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2209",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2209",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 3,
@@ -2854,7 +2854,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Set of  green vases&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2199",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2199",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 6,
@@ -2983,7 +2983,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Candle holder&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2195",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2195",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 4,
@@ -3112,7 +3112,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Product&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=2186",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=2186",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 6,
@@ -3247,7 +3247,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Table Lamp&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=1786",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=1786",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -3374,7 +3374,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Steel Wall Frame&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=1784",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=1784",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -3481,7 +3481,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Artificial Banana Tree – Wide Denim Leaves&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=1782",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=1782",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -3605,7 +3605,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;Wall Clock&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=1773",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=1773",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -3880,7 +3880,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;2-Piece Candle Holder Set&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=1763",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=1763",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -3993,7 +3993,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;3-Piece Candle Holder Set&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=1761",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=1761",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,
@@ -4106,7 +4106,7 @@
     "add_to_cart": {
       "text": "Add to cart",
       "description": "Add to cart: &ldquo;2-Piece Vase Se&rdquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;add-to-cart=1759",
+      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=1759",
       "single_text": "Add to cart",
       "minimum": 1,
       "maximum": 9999,

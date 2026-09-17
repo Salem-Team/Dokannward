@@ -26,9 +26,12 @@ import { Header } from "@/components/Header";
 
 function SkipLink() {
   const { t } = useLocale();
+  // Hardcoded English fallback keeps the skip link usable even if i18n
+  // dictionaries fail to load during a hot reload.
+  const label = t("a11y.skip") || "Skip to content";
   return (
     <a href="#main" className="skip-link">
-      {t("a11y.skip")}
+      {label}
     </a>
   );
 }

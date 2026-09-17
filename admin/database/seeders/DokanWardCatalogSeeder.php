@@ -251,7 +251,9 @@ class DokanWardCatalogSeeder extends Seeder
 
         $primaryCategory = null;
         foreach ($item['categories'] ?? [] as $c) {
-            $cSlug = (string) ($c['slug'] ?? '');
+            $cSlug = is_array($c)
+                ? (string) ($c['slug'] ?? '')
+                : (string) $c;
             if ($cSlug !== '' && isset($categoryMap[$cSlug])) {
                 $primaryCategory = $categoryMap[$cSlug];
                 break;
@@ -297,7 +299,7 @@ class DokanWardCatalogSeeder extends Seeder
                 'status' => 'active',
                 'visibility' => true,
                 'featured' => $featured,
-                'in_stock' => (bool) ($item['in_stock'] ?? true),
+                'in_stock' => (bool) ($item['in_stock'] ?? $item['is_in_stock'] ?? true),
             ]
         );
 

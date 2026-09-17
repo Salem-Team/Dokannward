@@ -21,12 +21,19 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   // Node 22 + Next's WasmHash can crash mid-build on a stale/.corrupt cache
-  // (`Cannot read properties of undefined (reading 'length')`). Prefer the
+  // (`Cannot read properties of undefined (reading 'length')`). Prefer a
   // pure-JS hasher so `npm run build` / `test:all` stay reliable.
   webpack: (config) => {
     config.output = config.output ?? {};
-    config.output.hashFunction = "xxhash64";
+    // sha256 avoids the intermittent WasmHash crash seen with xxhash64/wasm.
+    config.output.hashFunction = "sha256";
     return config;
+  },
+
+  // Lint runs via `npm run lint` (flat ESLint 9). Skipping the in-build lint
+  // step avoids FlatCompat/circular-config noise during `next build`.
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 
   // Hide the on-screen Next.js route/dev indicator in `next dev`.

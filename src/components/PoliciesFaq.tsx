@@ -44,14 +44,17 @@ export function PoliciesFaq({
 }) {
   const { locale } = useLocale();
   const faqItems = items?.length ? items : [];
-  if (faqItems.length === 0) return null;
-
+  const itemIdsKey = faqItems
+    .map((item, i) => `${i}:${item.tag ?? ""}:${item.q}`)
+    .join("|");
   const itemIds = faqItems.map((item, i) =>
     slugifyTag(item.tag?.trim() || "", i),
   );
   const [open, setOpen] = useState<number | null>(0);
 
   useEffect(() => {
+    if (faqItems.length === 0) return;
+
     const applyHash = () => {
       const index = indexFromHash(itemIds);
       if (index == null) return;
@@ -72,7 +75,11 @@ export function PoliciesFaq({
       window.removeEventListener("hashchange", applyHash);
       window.removeEventListener("dokannward:faq-hash", applyHash);
     };
-  }, [itemIds.join("|")]);
+    // itemIdsKey tracks FAQ content; itemIds is rebuilt in sync with it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [faqItems.length, itemIdsKey]);
+
+  if (faqItems.length === 0) return null;
 
   return (
     <section className="policies-faq" id="faq" aria-labelledby="faq-heading">
