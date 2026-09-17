@@ -1,4 +1,33 @@
 import type { NextConfig } from "next";
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+
+/** Load ROOTK-injected tenant env before Next evaluates NEXT_PUBLIC_* / branding. */
+function loadRootkEnvFiles() {
+  for (const rel of [".rootk/tenant.env", ".rootk/deployment.env"]) {
+    const path = join(process.cwd(), rel);
+    if (!existsSync(path)) continue;
+    for (const line of readFileSync(path, "utf8").split("\n")) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith("#")) continue;
+      const match =
+        trimmed.match(/^([A-Z0-9_]+)='([^']*)'/) ||
+        trimmed.match(/^([A-Z0-9_]+)="([^"]*)"/) ||
+        trimmed.match(/^([A-Z0-9_]+)=(.*)$/);
+      if (!match) continue;
+      const key = match[1];
+      const value = match[2] ?? "";
+      if (
+        (key.startsWith("ROOTK_") || key.startsWith("NEXT_PUBLIC_ROOTK_")) &&
+        !process.env[key]
+      ) {
+        process.env[key] = value;
+      }
+    }
+  }
+}
+
+loadRootkEnvFiles();
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001/api";
 let apiHostname = "localhost";
@@ -112,6 +141,12 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+  },
+
+  // Ensure admin branding JSON + ROOTK overlays are available when
+  // getTenantBranding() reads files at build/SSG time.
+  outputFileTracingIncludes: {
+    "/*": ["./admin/branding/**/*", "./.rootk/**/*"],
   },
 
   experimental: {

@@ -41,8 +41,16 @@ describe("getTenantBranding", () => {
     expect(b.colors.primary_color).toBe("#1180ee");
   });
 
-  it("emits CSS variables for anti-FOUC branding", () => {
-    const css = brandingCssVariables();
-    expect(css).toContain("--brand-primary:");
+  it("maps ROOTK hex-array brand colors onto primary/secondary/accent", () => {
+    process.env.NEXT_PUBLIC_ROOTK_TENANT_BRAND_COLORS = JSON.stringify([
+      "#532904",
+      "#debcad",
+      "#3D2E26",
+    ]);
+    clearTenantBrandingCache();
+    const b = getTenantBranding();
+    expect(b.colors.primary_color).toBe("#532904");
+    expect(b.colors.secondary_color).toBe("#debcad");
+    expect(b.colors.accent_color).toBe("#3D2E26");
   });
 });

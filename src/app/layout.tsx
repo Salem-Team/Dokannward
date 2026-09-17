@@ -31,6 +31,7 @@ import {
 } from "@/lib/seo";
 import { localeDocumentAttrs } from "@/lib/i18n";
 import { getServerLocale } from "@/lib/i18n/server";
+import { connection } from "next/server";
 import "./globals.css";
 
 const siteUrl = siteOrigin();
@@ -137,6 +138,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Request-time branding so ROOTK env / .rootk overlays always win over
+  // build-time neutral defaults (multi-tenant white-label).
+  await connection();
   const tenant = getTenantBranding();
   const [currency, store, checkout, inventory, content, locale] =
     await Promise.all([
@@ -204,7 +208,9 @@ export default async function RootLayout({
         {/* ROOTK_TENANT_BRANDING_START */}
         <style
           id="rootk-tenant-branding"
-          dangerouslySetInnerHTML={{ __html: `:root { ${brandCss} }` }}
+          dangerouslySetInnerHTML={{
+            __html: `/* ROOTK_TENANT_BRANDING_START */ :root { ${brandCss} } /* ROOTK_TENANT_BRANDING_END */`,
+          }}
         />
         {/* ROOTK_TENANT_BRANDING_END */}
         {/* Warm the API origin early so layout currency/settings don't wait on DNS+TLS. */}

@@ -95,12 +95,24 @@ function firstJson(relative: string): Record<string, unknown> | null {
 function parseBrandColors(raw: string | undefined): Record<string, string> {
   if (!raw) return {};
   try {
-    const arr = JSON.parse(raw) as Array<{ name?: string; value?: string }>;
-    if (!Array.isArray(arr)) return {};
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed)) return {};
     const out: Record<string, string> = {};
-    for (const item of arr) {
-      if (item?.name && item?.value) out[item.name] = item.value;
-    }
+    const named = ["primary_color", "secondary_color", "accent_color"];
+    parsed.forEach((item, index) => {
+      if (typeof item === "string" && item.startsWith("#") && named[index]) {
+        out[named[index]] = item;
+        return;
+      }
+      if (
+        item &&
+        typeof item === "object" &&
+        typeof (item as { name?: string }).name === "string" &&
+        typeof (item as { value?: string }).value === "string"
+      ) {
+        out[(item as { name: string }).name] = (item as { value: string }).value;
+      }
+    });
     return out;
   } catch {
     return {};
