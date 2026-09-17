@@ -435,7 +435,7 @@
 }
 
 .dark .brand-loader__logo {
-    filter: invert(1);
+    filter: none;
 }
 
 .dark .brand-loader__glow {
