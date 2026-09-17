@@ -36,7 +36,7 @@ class SettingsController extends Controller
             'store_address_ar' => 'مصر',
             'store_maps_url' => '',
             'store_logo' => '/images/dokan-ward-logo.png',
-            'store_logo_on_dark' => '/images/dokan-ward-logo.png',
+            'store_logo_on_dark' => '/images/dokan-ward-logo-on-dark.png',
             'seo_description' => 'Dokan Ward is Egypt’s home décor destination — premium artificial plants, vases, bakhoor, candles, lamps, and boho pieces curated since 2018.',
             'seo_og_image' => '/images/og-share.jpg',
             'social_instagram' => 'https://www.instagram.com/dokan_ward_96/',

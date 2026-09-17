@@ -3575,10 +3575,10 @@ html.locale-en .editorial-title {
   height: 92%;
   object-fit: contain;
   object-position: center;
-  background: #fefdf9 !important;
+  background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
-  filter: contrast(1.18) saturate(1.12);
+  filter: contrast(1.08) saturate(1.05);
   outline: none !important;
   image-rendering: auto;
   -ms-interpolation-mode: bicubic;
@@ -6629,12 +6629,12 @@ html[dir="rtl"] .link-underline::after {
   width: 46px;
   height: 46px;
   max-height: 46px;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 50%;
-  background: #fff;
+  background: #fefdf9;
   box-shadow:
-    0 0 0 1px rgb(0 0 0 / 0.08),
-    0 1px 6px rgb(0 0 0 / 0.04);
+    0 0 0 1px rgb(154 122 102 / 0.35),
+    0 1px 6px rgb(58 42 26 / 0.08);
   transition:
     transform 0.45s var(--ease-spring),
     box-shadow 0.4s var(--ease-soft);

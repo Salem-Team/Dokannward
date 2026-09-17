@@ -7,7 +7,7 @@ export const BRAND = {
   url: "https://dokannward.com",
   currency: "EGP",
   logo: "/images/dokan-ward-logo.png",
-  logoOnDark: "/images/dokan-ward-logo.png",
+  logoOnDark: "/images/dokan-ward-logo-on-dark.png",
   announcement: "Bring nature indoors — shop home decor, plants & more",
   description:
     "Dokan Ward is Egypt’s home décor destination — premium artificial plants, vases, bakhoor, candles, lamps, and boho pieces curated since 2018.",
@@ -30,7 +30,7 @@ export const BRAND = {
 } as const;
 
 /** Cache-buster for hero assets when paths are the built-in defaults. */
-export const HERO_CACHE = "v5";
+export const HERO_CACHE = "v6";
 
 export function withHeroCache(src: string): string {
   if (!src) return src;

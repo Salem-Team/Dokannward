@@ -514,7 +514,7 @@ export const DEFAULT_STORE_SETTINGS: StoreSettings = {
   address_ar: "مصر",
   maps_url: "",
   logo: "/images/dokan-ward-logo.png",
-  logo_on_dark: "/images/dokan-ward-logo.png",
+  logo_on_dark: "/images/dokan-ward-logo-on-dark.png",
   seo_description:
     "Dokan Ward is Egypt’s home décor destination — premium artificial plants, vases, bakhoor, candles, lamps, and boho pieces curated since 2018.",
   seo_og_image: "/images/og-share.jpg",
