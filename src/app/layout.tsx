@@ -4,7 +4,7 @@ import { Providers } from "@/components/Providers";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { MetaPixel } from "@/components/MetaPixel";
-import { BRAND } from "@/lib/brand";
+import { BRAND, withLogoCache } from "@/lib/brand";
 import {
   brandingCssVariables,
   getTenantBranding,
@@ -160,16 +160,18 @@ export default async function RootLayout({
     tenant.websiteDescription ||
     BRAND.description;
 
-  const logo =
+  const logo = withLogoCache(
     (store.logo && !/zibra/i.test(store.logo) ? store.logo : null) ||
-    tenant.logoLightUrl ||
-    BRAND.logo;
-  const logoOnDark =
+      tenant.logoLightUrl ||
+      BRAND.logo,
+  );
+  const logoOnDark = withLogoCache(
     (store.logo_on_dark && !/zibra/i.test(store.logo_on_dark)
       ? store.logo_on_dark
       : null) ||
-    tenant.logoDarkUrl ||
-    BRAND.logoOnDark;
+      tenant.logoDarkUrl ||
+      BRAND.logoOnDark,
+  );
 
   const graph = organizationGraph({
     name,

@@ -78,6 +78,32 @@ export const BRAND = {
 /** Cache-buster for hero assets when paths are the built-in defaults. */
 export const HERO_CACHE = "v7";
 
+/**
+ * Brand logos under /images and /branding are served with a 1-year immutable
+ * Cache-Control. Replacing the file in place leaves browsers (and raw <img>
+ * tags on empty-cart / order-success) stuck on a previous tenant's logo.
+ * Bump LOGO_CACHE whenever seal / wordmark assets change.
+ */
+export const LOGO_CACHE = "v2";
+
+export function withLogoCache(src: string): string {
+  if (!src) return src;
+  if (/^https?:\/\//i.test(src)) return src;
+  const [path, query = ""] = src.split("?");
+  const base = path || src;
+  if (
+    !base.startsWith("/images/brand-logo") &&
+    !base.startsWith("/images/dokan-ward-logo") &&
+    !base.startsWith("/branding/")
+  ) {
+    return src;
+  }
+  if (/(?:^|&)v\d+(?:&|$)/.test(query) || query === LOGO_CACHE) {
+    return src;
+  }
+  return query ? `${base}?${query}&${LOGO_CACHE}` : `${base}?${LOGO_CACHE}`;
+}
+
 export function withHeroCache(src: string): string {
   if (!src) return src;
   if (/^https?:\/\//i.test(src)) return src;
@@ -85,10 +111,16 @@ export function withHeroCache(src: string): string {
   if (
     base === BRAND.heroImage ||
     base === BRAND.heroWordmark ||
-    base.startsWith("/images/hero-layers/") ||
-    base === BRAND.logo
+    base.startsWith("/images/hero-layers/")
   ) {
     return `${base}?${HERO_CACHE}`;
+  }
+  if (
+    base.startsWith("/images/brand-logo") ||
+    base.startsWith("/images/dokan-ward-logo") ||
+    base.startsWith("/branding/")
+  ) {
+    return withLogoCache(base);
   }
   return src;
 }
