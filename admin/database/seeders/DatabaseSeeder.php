@@ -18,18 +18,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $adminEmail = strtolower((string) env('ADMIN_SEED_EMAIL', 'admin@dokannward.com'));
+        $this->call(PlatformBrandSeeder::class);
+
+        $adminEmail = strtolower((string) env('ADMIN_SEED_EMAIL', 'admin@example.com'));
         $adminPassword = (string) env('ADMIN_SEED_PASSWORD', '');
 
         if ($adminPassword === '' || strlen($adminPassword) < 12) {
             // Safe local default that still meets Password::defaults(); override in .env for real deploys.
-            $adminPassword = 'Dokan Ward!Admin#2026';
+            $adminPassword = 'ChangeMe!Admin#2026';
         }
 
         User::query()->updateOrCreate(
             ['email' => $adminEmail],
             [
-                'name' => env('ADMIN_SEED_NAME', 'Dokan Ward Admin'),
+                'name' => env('ADMIN_SEED_NAME', 'Store Admin'),
                 'normalized_email' => $adminEmail,
                 'password' => $adminPassword,
                 'is_admin' => true,

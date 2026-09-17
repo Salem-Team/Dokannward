@@ -313,7 +313,7 @@
                 ])
             </x-admin.card>
 
-            <x-admin.card title="Dokan Ward Product Code" icon="fas fa-qrcode" variant="default">
+            <x-admin.card title="Product Code" icon="fas fa-qrcode" variant="default">
                 @include('admin.products._product-qr', ['product' => $product])
             </x-admin.card>
 

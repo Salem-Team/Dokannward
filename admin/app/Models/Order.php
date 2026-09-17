@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\Branding;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
@@ -70,17 +71,18 @@ class Order extends Model
 
     /**
      * Hands out a guaranteed-unique, sequential, human-trackable order
-     * number like "ZBR-000042". Every checkout path (Next.js API, legacy
-     * Blade cart, admin-created orders) funnels through here so the store
-     * only ever has one numbering scheme.
+     * number like "DW-000042". Prefix comes from Branding::exportPrefix()
+     * (ROOTK / platform_brands) — never a hardcoded product code.
      *
      * The increment itself is a single atomic `UPDATE ... WHERE id = 1`,
      * which MySQL executes under a row lock — concurrent checkouts simply
      * queue up for that one row instead of racing, so two orders can never
      * be handed the same number.
      */
-    public static function generateOrderNumber(string $prefix = 'ZBR'): string
+    public static function generateOrderNumber(?string $prefix = null): string
     {
+        $prefix = $prefix ?? static::resolveNumberPrefix();
+
         return DB::transaction(function () use ($prefix) {
             DB::table('order_number_sequences')->where('id', 1)->increment('next_number');
             $sequence = (int) DB::table('order_number_sequences')->where('id', 1)->value('next_number') - 1;
@@ -98,6 +100,42 @@ class Order extends Model
 
             return $number;
         });
+    }
+
+    /** Short alphanumeric code derived from the tenant export prefix. */
+    public static function resolveNumberPrefix(): string
+    {
+        try {
+            $raw = (string) Branding::exportPrefix();
+        } catch (\Throwable) {
+            $raw = 'ORD';
+        }
+
+        return static::normalizeNumberPrefix($raw);
+    }
+
+    public static function normalizeNumberPrefix(string $raw): string
+    {
+        $raw = trim($raw);
+        $alnum = strtoupper((string) preg_replace('/[^A-Za-z0-9]+/', '', $raw));
+        if (strlen($alnum) >= 2 && strlen($alnum) <= 5) {
+            return $alnum;
+        }
+
+        $parts = preg_split('/[\s\-_]+/', $raw, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+        if (count($parts) >= 2) {
+            $acro = '';
+            foreach (array_slice($parts, 0, 3) as $part) {
+                $letter = strtoupper(substr((string) preg_replace('/[^A-Za-z0-9]/', '', $part), 0, 1));
+                if ($letter !== '') {
+                    $acro .= $letter;
+                }
+            }
+
+            return $acro !== '' ? $acro : 'ORD';
+        }
+
+        return strtoupper(substr($alnum !== '' ? $alnum : 'ORD', 0, 3));
     }
 
     public function items()

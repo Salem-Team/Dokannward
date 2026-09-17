@@ -51,9 +51,11 @@ class OrderReturn extends Model
         static::deleted(fn () => Cache::forget('admin.dashboard.payload'));
     }
 
-    /** Sequential credit-note numbers like ZBR-R-000042. */
-    public static function generateReturnNumber(string $prefix = 'ZBR-R'): string
+    /** Sequential credit-note numbers like DW-R-000042 (prefix from branding). */
+    public static function generateReturnNumber(?string $prefix = null): string
     {
+        $prefix = $prefix ?? (Order::resolveNumberPrefix().'-R');
+
         return DB::transaction(function () use ($prefix) {
             DB::table('order_number_sequences')->where('id', 2)->increment('next_number');
             $sequence = (int) DB::table('order_number_sequences')->where('id', 2)->value('next_number') - 1;

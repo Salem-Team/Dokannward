@@ -8,9 +8,11 @@ use App\Models\Product;
 use App\Models\SiteSetting;
 use App\Services\OrderLifecycle;
 use App\Services\OrderPlacementService;
+use App\Support\Branding;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class OrderController extends Controller
@@ -63,7 +65,7 @@ class OrderController extends Controller
             ->orderByDesc('created_at')
             ->get();
 
-        $filename = 'dokan-ward-orders-'.now()->format('Ymd-His').'.csv';
+        $filename = Str::slug(Branding::exportPrefix() ?: 'orders').'-orders-'.now()->format('Ymd-His').'.csv';
 
         return response()->streamDownload(function () use ($orders) {
             $out = fopen('php://output', 'w');

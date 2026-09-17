@@ -6,7 +6,9 @@ use App\Models\ContactMessage;
 use App\Models\Notification;
 use App\Models\Order;
 use App\Models\ProductReview;
+use App\Services\Branding\BrandingService;
 use App\Services\NavBadge;
+use App\Support\Branding;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(BrandingService::class);
     }
 
     /**
@@ -34,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
         $this->guardProductionUrls();
         $this->configurePasswordDefaults();
+        $this->shareBrandingWithViews();
+        $this->applyBrandingMailFrom();
 
         // Admin "Keep me signed in" — long enough for daily staff use,
         // short enough that a stolen device does not stay privileged forever.
@@ -63,6 +67,49 @@ class AppServiceProvider extends ServiceProvider
         foreach ([Notification::class, ProductReview::class, ContactMessage::class, Order::class] as $model) {
             $model::saved(fn () => self::forgetChromeCache());
             $model::deleted(fn () => self::forgetChromeCache());
+        }
+    }
+
+    /**
+     * Share resolved branding with every admin Blade view (live — no config:cache).
+     */
+    private function shareBrandingWithViews(): void
+    {
+        View::composer(['admin.*', 'errors.*'], function ($view) {
+            $branding = Branding::all();
+            $tenant = Branding::tenantBranding();
+
+            $view->with([
+                'branding' => $branding,
+                'tenantBranding' => $tenant,
+                'brandDisplayName' => $tenant['displayName'] ?: ($branding['company_name'] ?? 'Default Company'),
+                'brandLogoUrl' => $tenant['logoLightUrl'] ?: ($branding['logo_light_url'] ?? asset('images/brand-logo.png')),
+                'brandLogoOnDarkUrl' => $tenant['logoDarkUrl']
+                    ?: ($branding['logo_dark_url'] ?? asset('images/brand-logo-on-dark.png')),
+                'brandFaviconUrl' => $tenant['faviconUrl'] ?: ($branding['favicon_url'] ?? asset('favicon.ico')),
+                'brandCssVariables' => app(BrandingService::class)->cssVariables(),
+            ]);
+        });
+    }
+
+    /** Keep outbound mail "from" name aligned with live tenant branding. */
+    private function applyBrandingMailFrom(): void
+    {
+        try {
+            if (! $this->app->runningInConsole() && request()->is('api/*')) {
+                return;
+            }
+
+            $name = Branding::companyName();
+            $address = (string) (Branding::get('email_from_address') ?: config('mail.from.address'));
+            if ($name !== '' && $address !== '') {
+                config([
+                    'mail.from.name' => (string) (Branding::get('email_from_name') ?: $name),
+                    'mail.from.address' => $address,
+                ]);
+            }
+        } catch (\Throwable) {
+            // Branding unavailable during early boot / migrate.
         }
     }
 

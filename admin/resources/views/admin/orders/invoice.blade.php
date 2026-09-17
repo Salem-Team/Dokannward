@@ -305,8 +305,25 @@
         $address = $order->shippingAddress;
         $itemCount = (int) $order->items->sum('qty');
 
-        $logoPath = public_path('images/brand/dokan-ward-logo-invoice.png');
-        $logoWhitePath = public_path('images/brand/dokan-ward-logo-invoice-white.png');
+        $displayName = $brandDisplayName ?? 'Default Company';
+        $logoLight = $brandLogoUrl ?? asset('images/brand-logo.png');
+        $logoDark = $brandLogoOnDarkUrl ?? asset('images/brand-logo-on-dark.png');
+        $logoPath = public_path('images/brand-logo.png');
+        $logoWhitePath = public_path('images/brand-logo-on-dark.png');
+        foreach ([
+            public_path('images/brand-logo.png'),
+            public_path('images/dokan-ward-logo.png'),
+            public_path('images/brand/dokan-ward-logo-invoice.png'),
+        ] as $candidate) {
+            if (is_file($candidate)) { $logoPath = $candidate; break; }
+        }
+        foreach ([
+            public_path('images/brand-logo-on-dark.png'),
+            public_path('images/dokan-ward-logo-on-dark.png'),
+            public_path('images/brand/dokan-ward-logo-invoice-white.png'),
+        ] as $candidate) {
+            if (is_file($candidate)) { $logoWhitePath = $candidate; break; }
+        }
         $logoSrc = is_file($logoPath)
             ? 'data:image/png;base64,'.base64_encode(file_get_contents($logoPath))
             : null;
@@ -319,9 +336,9 @@
         <tr>
             <td style="width: 58%; vertical-align: middle;">
                 @if ($logoSrc)
-                    <img src="{{ $logoSrc }}" alt="Dokan Ward" class="brand-logo" width="168" height="43">
+                    <img src="{{ $logoSrc }}" alt="{{ $displayName ?? $brandDisplayName ?? 'Store' }}" class="brand-logo" width="168" height="43">
                 @else
-                    <div style="font-size: 22px; font-weight: bold; letter-spacing: 4px; text-transform: uppercase;">Dokan Ward</div>
+                    <div style="font-size: 22px; font-weight: bold; letter-spacing: 4px; text-transform: uppercase;">{{ $displayName ?? $brandDisplayName ?? 'Store' }}</div>
                 @endif
                 <div class="brand-sub">Commerce invoice</div>
             </td>
@@ -478,10 +495,10 @@
 
     <div class="footer">
         @if ($logoWhiteSrc)
-            <img src="{{ $logoWhiteSrc }}" alt="Dokan Ward" class="footer-logo" width="110" height="28">
+            <img src="{{ $logoWhiteSrc }}" alt="{{ $displayName ?? $brandDisplayName ?? 'Store' }}" class="footer-logo" width="110" height="28">
         @endif
         <p class="footer-copy">
-            This invoice was issued for order {{ $order->order_number }} through Dokan Ward Commerce.
+            This invoice was issued for order {{ $order->order_number }} through {{ $displayName ?? $brandDisplayName ?? 'Store' }} Commerce.
             Treat every detail with the same care as the brand experience online.
         </p>
     </div>

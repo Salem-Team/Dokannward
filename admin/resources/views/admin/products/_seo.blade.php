@@ -101,7 +101,7 @@
                         Z
                     </div>
                     <div class="min-w-0">
-                        <p class="text-sm text-gray-800 dark:text-gray-200 leading-tight truncate">Dokan Ward</p>
+                        <p class="text-sm text-gray-800 dark:text-gray-200 leading-tight truncate">{{ $brandDisplayName ?? 'Store' }}</p>
                         <p id="seo-preview-url" class="text-xs text-gray-500 truncate">
                             {{ $siteOrigin }}/products/{{ $seoSlug ?: 'product-slug' }}
                         </p>

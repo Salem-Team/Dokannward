@@ -474,8 +474,8 @@
                 <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
                     <div class="max-w-2xl">
                         <div class="flex items-center gap-3 mb-5">
-                            <img src="{{ asset('images/brand/dokan-ward-logo-invoice-white.png') }}"
-                                alt="Dokan Ward" class="h-7 w-auto opacity-95">
+                            <img src="{{ ($brandLogoOnDarkUrl ?? asset('images/brand-logo-on-dark.png')) }}"
+                                alt="{{ $brandDisplayName ?? 'Store' }}" class="h-7 w-auto opacity-95">
                             <span class="dash-live" aria-hidden="true"></span>
                             <span class="text-[10px] uppercase tracking-[0.22em] text-white/45">Live commerce</span>
                         </div>
@@ -485,7 +485,7 @@
                             {{ $adminName }}
                         </h1>
                         <p class="mt-3 text-sm text-white/65 max-w-lg leading-relaxed">
-                            Dokan Ward Admin — a precise read of revenue, orders, and inventory, aligned with the storefront experience.
+                            {{ $brandDisplayName ?? 'Store' }} Admin — a precise read of revenue, orders, and inventory, aligned with the storefront experience.
                         </p>
                     </div>
 

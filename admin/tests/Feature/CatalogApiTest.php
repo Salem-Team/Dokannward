@@ -176,7 +176,7 @@ it('applies shipping and tax from site settings at checkout', function () {
     $response->assertCreated()
         ->assertJsonPath('status', 'pending');
 
-    expect($response->json('order_number'))->toStartWith('ZBR-');
+    expect($response->json('order_number'))->toStartWith('DW-');
     expect((float) $response->json('total_amount'))->toBe(300.0); // 250 + 25 ship + 25 tax
 
     expect(Notification::where('type', 'order')->count())->toBe(1);

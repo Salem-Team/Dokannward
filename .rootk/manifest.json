@@ -1,0 +1,31 @@
+{
+  "runtimeType": "nextjs",
+  "domain": "{slug}.{apex}",
+  "suggestedDomain": "{slug}.{apex}",
+  "database": {
+    "required": true,
+    "engine": "mysql",
+    "name": "rootk_{slug}"
+  },
+  "branding": {
+    "variables": [
+      { "name": "primary_color", "label": "Primary", "default": "#0a0a0a" },
+      { "name": "secondary_color", "label": "Secondary", "default": "#fafafa" },
+      { "name": "accent_color", "label": "Accent", "default": "#2a2a2a" },
+      { "name": "primary_hover", "label": "Primary hover", "default": "#000000" },
+      { "name": "theme_color_light", "label": "Theme (light)", "default": "#ffffff" },
+      { "name": "theme_color_dark", "label": "Theme (dark)", "default": "#0a0a0a" },
+      { "name": "mobile_splash_color", "label": "Mobile splash", "default": "#0a0a0a" }
+    ]
+  },
+  "languages": ["ar", "en"],
+  "install": {
+    "command": "php artisan rootk:install",
+    "cwd": "admin",
+    "frontend": "npm run rootk:install"
+  },
+  "stacks": {
+    "frontend": "nextjs",
+    "backend": "laravel"
+  }
+}

@@ -117,7 +117,7 @@ it('creates a manual order with inventory-safe pricing', function () {
     expect($order)->not->toBeNull();
     $response->assertRedirect(route('admin.orders.show', $order->id));
 
-    expect($order->order_number)->toStartWith('ZBR-');
+    expect($order->order_number)->toStartWith('DW-');
     expect((float) $order->subtotal)->toBe(800.0);
     expect($order->customer_email)->toBe('client@example.com');
     expect($order->items)->toHaveCount(1);

@@ -7,12 +7,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-    <title>Sign in — {{ config('app.name', 'Dokan Ward') }}</title>
+    <title>Sign in — {{ $brandDisplayName ?? config('app.name', 'Default Company') }}</title>
 
     @include('admin.partials.favicon')
 
     @include('admin.partials.critical-loader-css')
-    <link rel="preload" href="{{ asset('images/brand/dokan-ward-logo.png') }}" as="image" type="image/svg+xml">
+    <link rel="preload" href="{{ $brandLogoUrl ?? asset('images/brand-logo.png') }}" as="image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,8 +37,8 @@
         <div class="w-full max-w-[420px] animate-fade-in-up">
             <div class="border border-zibra-line bg-white">
                 <div class="px-8 pt-10 pb-8 text-center border-b border-zibra-line">
-                    <img src="{{ asset('images/brand/dokan-ward-logo.png') }}" alt="Dokan Ward"
-                        class="h-9 w-auto mx-auto object-contain">
+                    <img src="{{ $brandLogoUrl ?? asset('images/brand-logo.png') }}" alt="{{ $brandDisplayName ?? 'Store' }}"
+                        class="h-14 w-14 mx-auto object-cover rounded-full border border-zibra-line bg-white">
                     <p class="mt-5 text-[10px] uppercase tracking-[0.28em] text-zibra-ash">Admin access</p>
                     <h1 class="mt-2 text-2xl font-semibold tracking-tight text-zibra-ink">Sign in</h1>
                     <p class="mt-2 text-sm text-zibra-ash">Authorized staff only. Sessions are encrypted and rate-limited.</p>
@@ -142,7 +142,7 @@
             </div>
 
             <p class="text-center mt-8 text-xs text-zibra-ash tracking-wide">
-                © {{ date('Y') }} Dokan Ward. All rights reserved.
+                © {{ date('Y') }} {{ $brandDisplayName ?? 'Default Company' }}. All rights reserved.
             </p>
         </div>
     </div>

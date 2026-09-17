@@ -14,13 +14,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', __('admin.dashboard')) — {{ config('app.name', 'Dokan Ward') }}</title>
+    <title>@yield('title', __('admin.dashboard')) — {{ $brandDisplayName ?? config('app.name', 'Default Company') }}</title>
 
     @include('admin.partials.favicon')
 
     {{-- Full branded loader paints before any external CSS/JS --}}
     @include('admin.partials.critical-loader-css')
-    <link rel="preload" href="{{ asset('images/brand/dokan-ward-logo.png') }}" as="image" type="image/svg+xml">
+    <link rel="preload" href="{{ ($brandLogoUrl ?? asset('images/brand-logo.png')) }}" as="image" type="image/svg+xml">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

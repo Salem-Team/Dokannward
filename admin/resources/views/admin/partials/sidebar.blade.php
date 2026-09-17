@@ -32,7 +32,7 @@
         <div class="admin-sidebar__brand">
             <div class="admin-drawer__brand-row">
                 <a href="{{ route('admin.dashboard') }}" class="admin-sidebar__brand-link group min-w-0" @click="closeSidebar()">
-                    <img src="{{ asset('images/brand/dokan-ward-logo.png') }}" alt="Dokan Ward"
+                    <img src="{{ ($brandLogoUrl ?? asset('images/brand-logo.png')) }}" alt="{{ $brandDisplayName ?? 'Store' }}"
                         class="admin-sidebar__logo">
                     <p class="admin-sidebar-brand">Admin · Commerce</p>
                 </a>
@@ -192,7 +192,7 @@
 
         <div class="admin-drawer__foot">
             <span class="admin-sidebar__foot-stripe" aria-hidden="true"></span>
-            <p class="admin-drawer__foot-label">Dokan Ward Commerce</p>
+            <p class="admin-drawer__foot-label">{{ $brandDisplayName ?? 'Store' }} Commerce</p>
             <p class="admin-drawer__foot-meta">Navigate the house</p>
         </div>
     </aside>

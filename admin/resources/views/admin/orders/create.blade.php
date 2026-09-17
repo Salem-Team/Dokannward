@@ -272,7 +272,7 @@
 
         <div class="brand-studio-page__header">
             <div>
-                <p class="brand-studio-page__eyebrow">Dokan Ward Commerce · Orders</p>
+                <p class="brand-studio-page__eyebrow">{{ $brandDisplayName ?? 'Store' }} · Orders</p>
                 <h1 class="brand-studio-page__title">Create order</h1>
                 <p class="brand-studio-page__sub">
                     Manual / phone orders use the same pricing & stock rules as website checkout.

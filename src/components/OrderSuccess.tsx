@@ -61,15 +61,16 @@ export function OrderSuccess({ order }: { order: OrderConfirmation }) {
       <div className="order-success__veil" aria-hidden="true" />
 
       <div className="order-success__panel">
-        <div className="order-success__logo-wrap" aria-hidden="true">
+        <div className="order-success__logo-wrap">
           <img
             src={brand.logo}
-            alt=""
-            width={180}
-            height={46}
+            alt={brand.name}
+            width={96}
+            height={96}
             className="order-success__logo"
           />
-          <span className="order-success__logo-shine" />
+          <span className="order-success__logo-shine" aria-hidden="true" />
+          <p className="order-success__brand-name">{brand.name}</p>
         </div>
 
         <div className="order-success__check" aria-hidden="true">

@@ -8,7 +8,7 @@
             <div>
                 <p class="brand-studio-page__eyebrow">The house</p>
                 <h1 class="brand-studio-page__title">Create brand</h1>
-                <p class="brand-studio-page__sub">Add a new house to the Dokan Ward collections index.</p>
+                <p class="brand-studio-page__sub">Add a new house to the store collections index.</p>
             </div>
             <x-admin.button variant="secondary" icon="fas fa-arrow-left" size="sm"
                 onclick="window.location='{{ route('admin.brands.index') }}'">

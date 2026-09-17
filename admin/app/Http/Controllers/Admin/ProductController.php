@@ -116,12 +116,13 @@ class ProductController extends Controller
     }
 
     /**
-     * Guaranteed-unique product SKU in the existing catalog format: ZBR-XXXXXX.
+     * Guaranteed-unique product SKU using the tenant export prefix.
      */
     private function generateUniqueSku(): string
     {
+        $prefix = \App\Models\Order::resolveNumberPrefix();
         do {
-            $sku = 'ZBR-'.Str::upper(Str::random(6));
+            $sku = $prefix.'-'.Str::upper(Str::random(6));
         } while (Product::where('sku', $sku)->exists());
 
         return $sku;

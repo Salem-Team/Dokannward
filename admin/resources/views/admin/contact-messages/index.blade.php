@@ -77,7 +77,7 @@
                                     class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="mailto:{{ $message->email }}?subject=Re: your message to Dokan Ward" title="Reply by email"
+                                <a href="mailto:{{ $message->email }}?subject=Re: your message to {{ $brandDisplayName ?? 'our store' }}" title="Reply by email"
                                     class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
                                     <i class="fas fa-reply"></i>
                                 </a>

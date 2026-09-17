@@ -82,7 +82,7 @@
 
             <div class="mt-6 flex justify-end">
                 <x-admin.button variant="primary" icon="fas fa-reply"
-                    onclick="window.location='mailto:{{ $message->email }}?subject=Re: your message to Dokan Ward'">
+                    onclick="window.location='mailto:{{ $message->email }}?subject=Re: your message to {{ $brandDisplayName ?? 'our store' }}'">
                     Reply by Email
                 </x-admin.button>
             </div>

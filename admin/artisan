@@ -9,6 +9,9 @@ define('LARAVEL_START', microtime(true));
 // Register the Composer autoloader...
 require __DIR__.'/vendor/autoload.php';
 
+// ROOTK tenant env must load before Laravel config boots.
+require __DIR__.'/bootstrap/rootk-env.php';
+
 // Bootstrap Laravel and handle the command...
 /** @var Application $app */
 $app = require_once __DIR__.'/bootstrap/app.php';

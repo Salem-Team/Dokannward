@@ -65,3 +65,7 @@ public/images/hero-layers/_v73_*
 public/images/hero-layers/_truth_*
 public/images/hero-layers/_qa_*
 public/images/hero-layers/composite-preview.png
+
+# ROOTK runtime (injected per tenant) — keep only the product manifesto
+.rootk/*
+!.rootk/manifest.json

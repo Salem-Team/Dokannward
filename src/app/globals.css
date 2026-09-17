@@ -9721,9 +9721,27 @@ html.locale-ar .policies-faq__tag {
 
 .order-success__logo {
   display: block;
-  width: 150px;
-  height: auto;
+  width: 96px;
+  height: 96px;
+  margin-inline: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #fefdf9;
+  box-shadow:
+    0 0 0 1px rgb(154 122 102 / 0.35),
+    0 8px 24px rgb(58 42 26 / 0.12);
   color: var(--color-ink);
+}
+
+.order-success__brand-name {
+  margin: 0.85rem 0 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink, #3a2a1a);
+  text-align: center;
 }
 
 .order-success__logo-shine {
@@ -10180,9 +10198,27 @@ html.locale-ar .policies-faq__tag {
 
 .checkout-empty__logo {
   display: block;
-  width: 132px;
-  height: auto;
+  width: 72px;
+  height: 72px;
+  margin-inline: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #fefdf9;
+  box-shadow:
+    0 0 0 1px rgb(154 122 102 / 0.35),
+    0 6px 18px rgb(58 42 26 / 0.1);
   color: var(--color-ink);
+}
+
+.checkout-empty__brand-name {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink, #3a2a1a);
+  text-align: center;
 }
 
 .checkout-empty__logo-shine {

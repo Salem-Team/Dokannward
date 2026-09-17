@@ -6,8 +6,8 @@
         <span class="brand-loader__ring brand-loader__ring--delayed"></span>
         <div class="brand-loader__logo-wrap">
             <img
-                src="{{ asset('images/brand/dokan-ward-logo.png') }}"
-                alt="Dokan Ward"
+                src="{{ ($brandLogoUrl ?? asset('images/brand-logo.png')) }}"
+                alt="{{ $brandDisplayName ?? 'Store' }}"
                 width="220"
                 height="56"
                 class="brand-loader__logo"

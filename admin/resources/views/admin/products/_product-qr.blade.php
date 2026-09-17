@@ -1,5 +1,5 @@
 {{--
-  Unique product QR — Dokan Ward atelier code.
+  Unique product QR — tenant product code.
   Props: $product (required)
 --}}
 @php
@@ -18,7 +18,7 @@
     data-qr-sku="{{ $product->sku }}"
     data-qr-title="{{ $product->translated_name }}"
     data-qr-cover="{{ $cover?->url }}"
-    data-qr-logo="{{ asset('images/brand/dokan-ward-logo.png') }}"
+    data-qr-logo="{{ ($brandLogoUrl ?? asset('images/brand-logo.png')) }}"
 >
     <div class="product-qr__stripes" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span>
@@ -32,7 +32,7 @@
                 <div class="product-qr__seal" data-qr-seal aria-hidden="true">
                     <img
                         class="product-qr__seal-logo"
-                        src="{{ asset('images/brand/dokan-ward-logo.png') }}"
+                        src="{{ ($brandLogoUrl ?? asset('images/brand-logo.png')) }}"
                         alt=""
                         width="28"
                         height="28"
@@ -45,14 +45,14 @@
 
         <div class="product-qr__meta">
             <div class="product-qr__brand-row">
-                <span class="product-qr__wordmark">Dokan Ward</span>
+                <span class="product-qr__wordmark">{{ $brandDisplayName ?? 'Store' }}</span>
                 <span class="product-qr__chip">Atelier code</span>
             </div>
 
             <h3 class="product-qr__title">{{ $product->translated_name }}</h3>
             <p class="product-qr__hint">
                 Each product carries a unique code. Scan to open the full dossier —
-                gallery, pricing, stock, colors, and specs — in the Dokan Ward experience.
+                gallery, pricing, stock, colors, and specs — in the {{ $brandDisplayName ?? 'Store' }} experience.
             </p>
 
             <dl class="product-qr__facts">

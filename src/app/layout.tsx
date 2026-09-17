@@ -6,6 +6,10 @@ import { JsonLd } from "@/components/JsonLd";
 import { MetaPixel } from "@/components/MetaPixel";
 import { BRAND } from "@/lib/brand";
 import {
+  brandingCssVariables,
+  getTenantBranding,
+} from "@/lib/tenant-branding";
+import {
   getCurrency,
   getStoreSettings,
   getCheckoutSettings,
@@ -43,22 +47,25 @@ export const viewport: Viewport = {
 };
 
 export async function generateMetadata(): Promise<Metadata> {
+  const tenant = getTenantBranding();
   const store = await getStoreSettings();
-  const name = store.name || BRAND.name;
+  const name = store.name || tenant.displayName || BRAND.name;
   const description =
     store.seo_description?.trim() ||
     store.description?.trim() ||
+    tenant.websiteDescription ||
     BRAND.description;
-  const ogImage = store.seo_og_image?.trim() || BRAND.ogImage;
+  const ogImage =
+    store.seo_og_image?.trim() || tenant.logoLightUrl || BRAND.ogImage;
 
   return {
     metadataBase: new URL(siteUrl),
     title: {
-      default: `${name} — Home Decor in Egypt`,
+      default: tenant.websiteTitle || `${name} — Home Decor in Egypt`,
       template: `%s – ${name}`,
     },
     description,
-    applicationName: name,
+    applicationName: tenant.mobileAppName || name,
     keywords: DEFAULT_KEYWORDS,
     authors: [{ name, url: siteUrl }],
     creator: name,
@@ -83,7 +90,7 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "en_EG",
       url: siteUrl,
       siteName: name,
-      title: `${name} — Home Decor in Egypt`,
+      title: tenant.websiteTitle || `${name} — Home Decor in Egypt`,
       description,
       images: [
         {
@@ -97,7 +104,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${name} — Home Decor in Egypt`,
+      title: tenant.websiteTitle || `${name} — Home Decor in Egypt`,
       description,
       images: [ogImage],
     },
@@ -130,6 +137,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const tenant = getTenantBranding();
   const [currency, store, checkout, inventory, content, locale] =
     await Promise.all([
       getCurrency(),
@@ -141,11 +149,23 @@ export default async function RootLayout({
     ]);
   const doc = localeDocumentAttrs(locale);
 
-  const name = store.name || BRAND.name;
+  const name = store.name || tenant.displayName || BRAND.name;
   const description =
     store.seo_description?.trim() ||
     store.description?.trim() ||
+    tenant.websiteDescription ||
     BRAND.description;
+
+  const logo =
+    (store.logo && !/zibra/i.test(store.logo) ? store.logo : null) ||
+    tenant.logoLightUrl ||
+    BRAND.logo;
+  const logoOnDark =
+    (store.logo_on_dark && !/zibra/i.test(store.logo_on_dark)
+      ? store.logo_on_dark
+      : null) ||
+    tenant.logoDarkUrl ||
+    BRAND.logoOnDark;
 
   const graph = organizationGraph({
     name,
@@ -154,7 +174,7 @@ export default async function RootLayout({
     phone: store.phone,
     address: store.address,
     mapsUrl: mapsHref(store.maps_url, store.address) || undefined,
-    logo: store.logo,
+    logo,
     ogImage: store.seo_og_image,
     sameAs: [
       store.social.instagram,
@@ -172,6 +192,8 @@ export default async function RootLayout({
     apiOrigin = null;
   }
 
+  const brandCss = brandingCssVariables(tenant);
+
   return (
     <html
       lang={doc.lang}
@@ -179,6 +201,12 @@ export default async function RootLayout({
       className={`${fontEnglish.variable} ${fontDisplay.variable} ${fontArabic.variable} ${fontArabicDisplay.variable} ${fontPolicy.variable} locale-${locale}`}
     >
       <head>
+        {/* ROOTK_TENANT_BRANDING_START */}
+        <style
+          id="rootk-tenant-branding"
+          dangerouslySetInnerHTML={{ __html: `:root { ${brandCss} }` }}
+        />
+        {/* ROOTK_TENANT_BRANDING_END */}
         {/* Warm the API origin early so layout currency/settings don't wait on DNS+TLS. */}
         {apiOrigin ? (
           <>
@@ -203,14 +231,8 @@ export default async function RootLayout({
           inventory={inventory}
           brand={{
             name,
-            logo:
-              store.logo && !/zibra/i.test(store.logo)
-                ? store.logo
-                : BRAND.logo,
-            logoOnDark:
-              store.logo_on_dark && !/zibra/i.test(store.logo_on_dark)
-                ? store.logo_on_dark
-                : BRAND.logoOnDark,
+            logo,
+            logoOnDark,
           }}
         >
           {children}

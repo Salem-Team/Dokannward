@@ -24,15 +24,16 @@ export function CheckoutEmpty() {
       </div>
 
       <div className="checkout-empty__panel">
-        <div className="checkout-empty__logo-wrap" aria-hidden="true">
+        <div className="checkout-empty__logo-wrap">
           <img
             src={brand.logo}
-            alt=""
-            width={140}
-            height={36}
+            alt={brand.name}
+            width={72}
+            height={72}
             className="checkout-empty__logo"
           />
-          <span className="checkout-empty__logo-shine" />
+          <span className="checkout-empty__logo-shine" aria-hidden="true" />
+          <p className="checkout-empty__brand-name">{brand.name}</p>
         </div>
 
         <div className="checkout-empty__bag" aria-hidden="true">
