@@ -171,7 +171,7 @@ describe("performance: LCP hero assets", () => {
     expect(HERO_BASE_PATH).toBe("/images/hero-layers/hero-base.jpg");
     expect(HERO_BASE_SRC).toContain("hero-base.jpg");
     expect(HERO_BASE_SRC).not.toContain("hero-base.png");
-    expect(HERO_LOGO_SRC).toContain("dokan-ward-logo");
+    expect(HERO_LOGO_SRC).toContain("brand-logo");
     expect(HERO_LOGO_SRC).not.toContain("wordmark.png");
   });
 });

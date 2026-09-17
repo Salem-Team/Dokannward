@@ -9,8 +9,8 @@ const DEFAULT_OG = BRAND.ogImage;
 const DEFAULT_DESCRIPTION = BRAND.description;
 
 const DEFAULT_KEYWORDS = [
-  "Dokan Ward",
-  "دكان ورد",
+  BRAND.name,
+  BRAND.nameAr,
   "home decor Egypt",
   "artificial plants Egypt",
   "vases Cairo",
@@ -18,8 +18,7 @@ const DEFAULT_KEYWORDS = [
   "boho home decor",
   "candle holders Egypt",
   "wall art clocks",
-  "Dokannward",
-];
+].filter(Boolean);
 
 export function siteOrigin(): string {
   return SITE_URL;

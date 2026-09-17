@@ -52,5 +52,6 @@ describe("getTenantBranding", () => {
     expect(b.colors.primary_color).toBe("#532904");
     expect(b.colors.secondary_color).toBe("#debcad");
     expect(b.colors.accent_color).toBe("#3D2E26");
+    expect(brandingCssVariables(b)).toContain("--brand-primary: #532904");
   });
 });

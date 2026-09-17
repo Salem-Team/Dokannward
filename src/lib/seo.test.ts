@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { BRAND } from "@/lib/brand";
 import {
   absoluteUrl,
   brandSeoFields,
@@ -59,37 +60,39 @@ const sampleProduct = {
   seoKeywords: null,
 } satisfies Product;
 
+const origin = BRAND.url.replace(/\/$/, "");
+
 describe("seo helpers", () => {
   it("builds absolute urls from site origin", () => {
-    expect(absoluteUrl("/products/tote")).toBe("https://dokannward.com/products/tote");
+    expect(absoluteUrl("/products/tote")).toBe(`${origin}/products/tote`);
     expect(absoluteUrl("https://cdn.example.com/a.jpg")).toBe(
       "https://cdn.example.com/a.jpg",
     );
   });
 
   it("strips trailing brand from titles to avoid duplication", () => {
-    expect(cleanSeoTitle("Curated tote – Dokan Ward")).toBe("Curated tote");
+    expect(cleanSeoTitle(`Curated tote – ${BRAND.name}`)).toBe("Curated tote");
     expect(cleanSeoTitle("Curated tote")).toBe("Curated tote");
   });
 
   it("emits canonical + og + twitter for indexable pages", () => {
     const meta = pageMetadata({
       path: "/collections/bags",
-      title: "Bags – Dokan Ward",
+      title: `Bags – ${BRAND.name}`,
       description: "Authenticated bags.",
       image: "/images/bags.jpg",
     });
 
     expect(meta.title).toBe("Bags");
     expect(meta.alternates).toEqual({
-      canonical: "https://dokannward.com/collections/bags",
+      canonical: `${origin}/collections/bags`,
     });
-    expect(meta.openGraph?.url).toBe("https://dokannward.com/collections/bags");
+    expect(meta.openGraph?.url).toBe(`${origin}/collections/bags`);
     expect(meta.openGraph?.locale).toBe("en_EG");
     const images = meta.openGraph?.images;
     const first = Array.isArray(images) ? images[0] : images;
     expect(first).toMatchObject({
-      url: "https://dokannward.com/images/bags.jpg",
+      url: `${origin}/images/bags.jpg`,
     });
     expect(meta.robots).toMatchObject({ index: true, follow: true });
   });
@@ -105,9 +108,9 @@ describe("seo helpers", () => {
 
   it("builds organization + website graph with Egypt area served", () => {
     const graph = organizationGraph({
-      name: "Dokan Ward",
-      email: "hello@dokannward.com",
-      sameAs: ["https://www.instagram.com/dokan_ward_96"],
+      name: BRAND.name,
+      email: "hello@example.com",
+      sameAs: ["https://www.instagram.com/example"],
       currencyCode: "EGP",
     });
     const nodes = graph["@graph"] as Array<Record<string, unknown>>;
@@ -129,13 +132,13 @@ describe("seo helpers", () => {
 
   it("attaches a Google Maps pin on the store graph", () => {
     const graph = organizationGraph({
-      name: "Dokan Ward",
+      name: BRAND.name,
       address: "The 5th Settlement, New Cairo",
-      mapsUrl: "https://maps.app.goo.gl/dokanward",
+      mapsUrl: "https://maps.app.goo.gl/example",
     });
     const nodes = graph["@graph"] as Array<Record<string, unknown>>;
     const store = nodes.find((n) => Array.isArray(n["@type"]))!;
-    expect(store.hasMap).toBe("https://maps.app.goo.gl/dokanward");
+    expect(store.hasMap).toBe("https://maps.app.goo.gl/example");
   });
 
   it("builds product offer schema with variants, material, and reviews", () => {
