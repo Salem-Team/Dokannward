@@ -7,7 +7,6 @@ cd "$ROOT"
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:${PATH}"
 
 HOST="${DOKANWARD_SSH_HOST:-zibra}"
-# Live ROOTK tenant first; legacy path kept in sync for parity.
 TENANTS=(
   "${DOKANWARD_REMOTE_PATH:-/var/www/dokan-ward}"
   "${DOKANWARD_MIRROR_PATH:-/var/www/dokannward}"
@@ -15,15 +14,16 @@ TENANTS=(
 PROD_HOST="${PROD_HOST:-dokan-ward.rootk-eg.com}"
 RELEASE_VERSION="$(node -p "require('./package.json').version")"
 
-echo "==> Release version ${RELEASE_VERSION}"
-echo "==> Push origin/main"
-git push origin HEAD:main
+stamp_tenant_version() {
+  local REMOTE="$1"
+  local VER="$2"
+  ssh -o BatchMode=yes "$HOST" \
+    "python3 ${REMOTE}/scripts/stamp-release-version.py '${REMOTE}' '${VER}'"
+}
 
 rsync_tenant() {
   local REMOTE="$1"
   echo "==> Rsync -> ${HOST}:${REMOTE}"
-  # Du=rwx,Dgo=rx keeps directories traversable by nginx (rsync from macOS can
-  # otherwise leave admin/ as 700 and break /storage + /api).
   rsync -az --delete \
     --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
     --exclude '.git/' \
@@ -57,7 +57,6 @@ rsync_tenant() {
     -e 'ssh -o BatchMode=yes' \
     ./ "${HOST}:${REMOTE}/"
 
-  # Catalog plates are gitignored under storage/ but required by seeded product photos.
   if [[ -d admin/storage/app/public/products/dokannward ]]; then
     echo "==> Sync product images -> ${REMOTE}"
     ssh -o BatchMode=yes "$HOST" "mkdir -p ${REMOTE}/admin/storage/app/public/products/dokannward"
@@ -83,47 +82,8 @@ rsync_tenant() {
   fi
 
   rsync -az scripts/ "${HOST}:${REMOTE}/scripts/"
-  ssh -o BatchMode=yes "$HOST" "chmod +x ${REMOTE}/scripts/*.sh"
-
-  # Stamp ROOTK release version when the tenant is ROOTK-managed.
-  ssh -o BatchMode=yes "$HOST" "bash -s" <<EOF
-set -euo pipefail
-REMOTE='${REMOTE}'
-VER='${RELEASE_VERSION}'
-if [[ -f "\$REMOTE/.rootk/tenant.env" ]]; then
-  python3 - <<'PY'
-from pathlib import Path
-import re
-remote = Path("${REMOTE}")
-ver = "${RELEASE_VERSION}"
-for rel in [".rootk/tenant.env", ".rootk/deployment.env"]:
-    p = remote / rel
-    if not p.is_file():
-        continue
-    text = p.read_text()
-    for key in ("ROOTK_RELEASE_VERSION", "NEXT_PUBLIC_ROOTK_RELEASE_VERSION"):
-        pat = rf"(?m)^{key}='[^']*'"
-        if re.search(pat, text):
-            text = re.sub(pat, f"{key}='{ver}'", text)
-        else:
-            text = text.rstrip() + f"\n{key}='{ver}'\n"
-    p.write_text(text)
-    print(f"stamped {p} -> {ver}")
-PY
-fi
-# Keep package.json version aligned on the box.
-python3 - <<'PY'
-import json
-from pathlib import Path
-p = Path("${REMOTE}") / "package.json"
-data = json.loads(p.read_text())
-data["version"] = "${RELEASE_VERSION}"
-if data.get("name") in ("zibra", "dokannward", None):
-    data["name"] = "dokannward"
-p.write_text(json.dumps(data, indent=2) + "\n")
-print(f"package.json version -> ${RELEASE_VERSION}")
-PY
-EOF
+  ssh -o BatchMode=yes "$HOST" "chmod +x ${REMOTE}/scripts/*.sh ${REMOTE}/scripts/*.py 2>/dev/null || chmod +x ${REMOTE}/scripts/*.sh"
+  stamp_tenant_version "$REMOTE" "$RELEASE_VERSION"
 
   if [[ "$REMOTE" == *"/dokan-ward" ]]; then
     echo "==> Rebuild live tenant ${REMOTE}"
@@ -132,8 +92,13 @@ EOF
   else
     echo "==> Mirror synced (no PM2 rebuild): ${REMOTE}"
   fi
-}for tenant in "${TENANTS[@]}"; do
-  # Skip missing mirror dirs
+}
+
+echo "==> Release version ${RELEASE_VERSION}"
+echo "==> Push origin/main"
+git push origin HEAD:main
+
+for tenant in "${TENANTS[@]}"; do
   if ssh -o BatchMode=yes "$HOST" "[[ -d ${tenant} ]]"; then
     rsync_tenant "$tenant"
   else
@@ -141,4 +106,4 @@ EOF
   fi
 done
 
-echo "==> Done — https://${PROD_HOST} (v${RELEASE_VERSION})"
+echo "==> Done - https://${PROD_HOST} (v${RELEASE_VERSION})"
